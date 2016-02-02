@@ -21,11 +21,15 @@ public class ChessMain
 				
 
 			}
-		public static void takeMove(String iP, String fP)
+		public static void takeMove(Piece p)
 		{
-			 int x
-			
-			
+			 Scanner userMove = new Scanner(System.in);
+			 String[] move = userMove.nextLine().split(" ");
+			 
+			 String iP = move[0];
+			 String fP = move[1];
+			 
+			p.makeMove(iP, fP);
 			
 		}
 		
@@ -34,29 +38,97 @@ public class ChessMain
 			
 			for(int yCoord =0; yCoord<8; yCoord++)
 			{
-				System.out.println(" _______________________________________________");
+				System.out.println("    _______________________________________________________________");
+				System.out.print("   ");
 				for(int i=0; i<9; i++)
 					{
-					System.out.print("|     ");
+					System.out.print("|       ");
 					}
 				System.out.println();
-				System.out.print("|");
+				
+				switch(yCoord)
+				{
+				case 0:
+					System.out.print("8");
+					break;
+				case 1:
+					System.out.print("7");
+					break;
+				case 2:
+					System.out.print("6");
+					break;
+				case 3:
+					System.out.print("5");
+					break;
+				case 4:
+					System.out.print("4");
+					break;
+				case 5:
+					System.out.print("3");
+					break;
+				case 6:
+					System.out.print("2");
+					break;
+				case 7:
+					System.out.print("1");
+					break;
+						
+					
+				}
+				
+				System.out.print("  |");
 				for(int xCoord = 0; xCoord<8; xCoord++)
 				{
 				
-				System.out.print("  " + board[yCoord][xCoord].getAbr() + "  |");	
+				System.out.print("   " + board[yCoord][xCoord].getAbr() + "   |");	
 			
 				}
 				System.out.println();
+				System.out.print("   ");
 				for(int i=0; i<9; i++)
 				{
-				System.out.print("|     ");
+				System.out.print("|       ");
 				}
 				System.out.println();
 				
 			}
-			System.out.println(" _______________________________________________");
 			
+			System.out.println("    _______________________________________________________________");			
+			System.out.println();
+			System.out.print("       ");
+			for(int x =0; x<8; x++)
+			{
+				switch(x)
+				{
+				case 0:
+					System.out.print("A");
+					break;
+				case 1:
+					System.out.print("B");
+					break;
+				case 2:
+					System.out.print("C");
+					break;
+				case 3:
+					System.out.print("D");
+					break;
+				case 4:
+					System.out.print("E");
+					break;
+				case 5:
+					System.out.print("F");
+					break;
+				case 6:
+					System.out.print("G");
+					break;
+				case 7:
+					System.out.print("H");
+					break;
+				}
+				System.out.print("       ");
+			}
+			System.out.println();
+			System.out.println();
 		}
 
 		

@@ -28,6 +28,7 @@ public class Pawn extends Piece
 		 * If piece is pawn can move 1 diagonal to take
 		 */
 		
+		
 		return false;
 		
 	}
