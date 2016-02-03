@@ -16,12 +16,13 @@ public class ChessMain
 				addBlackPieces();
 				addWhitePieces();
 				addEmptySpaces();
+				
 				printBoard();
-				
-				
+				takeMove();
+				printBoard();
 
 			}
-		public static void takeMove(Piece p)
+		public static void takeMove()
 		{
 			 Scanner userMove = new Scanner(System.in);
 			 String[] move = userMove.nextLine().split(" ");
@@ -29,7 +30,73 @@ public class ChessMain
 			 String iP = move[0];
 			 String fP = move[1];
 			 
-			p.makeMove(iP, fP);
+			 int iy1 = Integer.parseInt(iP,1)-1;
+			 int ix1 = 0;
+			 
+			 switch(iP.substring(0,1))
+			 {
+			 case "A":
+				 ix1 = 7;
+				 break;
+			 case "B":
+				 ix1 = 6;
+				 break;
+			 case "C":
+				 ix1 = 5;
+				 break;
+			 case "D":
+				 ix1 = 4;
+				 break;
+			 case "E":
+				 ix1 = 3;
+				 break;
+			 case "F":
+				 ix1 = 2;
+				 break;
+			 case "G":
+				 ix1 = 1;
+				 break;
+			 case "H":
+				 ix1 = 0;
+				 break;
+			 }
+			 
+			 
+			 
+			 int iy2 = Integer.parseInt(fP,1) -1;
+			 int ix2 = 0;
+			 
+			 switch(fP.substring(0,1))
+			 {
+			 case "A":
+				 ix2 = 7;
+				 break;
+			 case "B":
+				 ix2 = 6;
+				 break;
+			 case "C":
+				 ix2 = 5;
+				 break;
+			 case "D":
+				 ix2 = 4;
+				 break;
+			 case "E":
+				 ix2 = 3;
+				 break;
+			 case "F":
+				 ix2 = 2;
+				 break;
+			 case "G":
+				 ix2 = 1;
+				 break;
+			 case "H":
+				 ix2 = 0;
+				 break;
+			 }
+			 
+			 
+			 
+		 makeMove(ix1, iy1, ix2, iy2);
 			
 		}
 		

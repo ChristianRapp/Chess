@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Pawn extends Piece
 {
@@ -15,12 +16,60 @@ public class Pawn extends Piece
 
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
-		if(((ixP+1 ==fxP||ixP-1 ==fxP)&& iyP+1 ==fyP)/*If diagonal and up 1*/|| (ixP+1 ==fxP&& iyP ==fyP)/*Checks to see if goes up one*/ ||(ixP+2 ==fxP&& iyP ==fyP)/*Checks to see if goes up two*/)
-		{
 		
+		if(((ixP+1 ==fxP||ixP-1 ==fxP)&& iyP+1 ==fyP)/*If diagonal and up 1*/|| (ixP+1 ==fxP&& iyP ==fyP)/*Checks to see if goes up one*/ ||(ixP+2 ==fxP&& iyP ==fyP)/*Checks to see if goes up two*/)
+			{
+		
+				
+			if(ixP+1 == fxP && iyP == fyP)/* x + 1 same y*/
+				{
+					
+				if(ChessMain.board[fxP][fyP] instanceof Empty)
+					{
+						
+						return true;
 			
+					}
+						
+				}
 			
-		}
+			if(ixP+1 == fxP && iyP+1 == fyP)/* x + 1 same y*/
+				{
+					
+				if(ChessMain.board[fxP][fyP] instanceof Empty)
+					{
+						
+						return true;
+			
+					}
+						
+				}
+			
+			if(ixP+1 == fxP && iyP-1 == fyP)/* x + 1 same y*/
+				{
+					
+				if(ChessMain.board[fxP][fyP] instanceof Empty)
+					{
+						
+						return true;
+			
+					}
+						
+				}
+			
+			if(ixP+2 == fxP && iyP == fyP)/* x + 1 same y*/
+				{
+					
+				if(ChessMain.board[fxP][fyP] instanceof Empty)
+					{
+						
+						return true;
+			
+					}
+						
+				}
+			
+			}
 		
 		/* Check to see if first move.
 		 * If first move pawn can go 2 up if not blocked

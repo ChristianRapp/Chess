@@ -15,71 +15,15 @@ public abstract class Piece
 		public void makeMove(String iP, String fP)
 		{
 			
-			 int iy1 = Integer.parseInt(iP,1)-1;
-			 int ix1 = 0;
-			 
-			 switch(iP.substring(0,1))
-			 {
-			 case "A":
-				 ix1 = 7;
-				 break;
-			 case "B":
-				 ix1 = 6;
-				 break;
-			 case "C":
-				 ix1 = 5;
-				 break;
-			 case "D":
-				 ix1 = 4;
-				 break;
-			 case "E":
-				 ix1 = 3;
-				 break;
-			 case "F":
-				 ix1 = 2;
-				 break;
-			 case "G":
-				 ix1 = 1;
-				 break;
-			 case "H":
-				 ix1 = 0;
-				 break;
-			 }
 			 
 			 
-			 
-			 int iy2 = Integer.parseInt(fP,1) -1;
-			 int ix2 = 0;
-			 
-			 switch(fP.substring(0,1))
-			 {
-			 case "A":
-				 ix2 = 7;
-				 break;
-			 case "B":
-				 ix2 = 6;
-				 break;
-			 case "C":
-				 ix2 = 5;
-				 break;
-			 case "D":
-				 ix2 = 4;
-				 break;
-			 case "E":
-				 ix2 = 3;
-				 break;
-			 case "F":
-				 ix2 = 2;
-				 break;
-			 case "G":
-				 ix2 = 1;
-				 break;
-			 case "H":
-				 ix2 = 0;
-				 break;
-			 }
-			 
-			 this.isValidMove(ix1, iy1, ix2, iy2);
+			 if(this.isValidMove(ix1, iy1, ix2, iy2) == true)
+				 {
+					 
+				 ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
+				 ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
+					 
+				 }
 			 
 			 
 		}
