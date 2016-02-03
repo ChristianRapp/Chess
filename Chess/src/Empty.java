@@ -12,8 +12,9 @@ public class Empty extends Piece
 		abr = " ";
 	}
 		
-	public boolean isValidMove(String iP, String fP) {
-		// TODO Auto-generated method stub
+
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP) {
+		
 		return false;
 	}
 

@@ -12,7 +12,7 @@ public class Rook extends Piece{
 		abr = "R";
 	}
 	
-	public boolean isValidMove(String iP, String fP)
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		
 		return false;

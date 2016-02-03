@@ -10,76 +10,76 @@ public abstract class Piece
 		protected String color;
 		
 		
-		public abstract boolean isValidMove(String iP, String fP);
+		public abstract boolean isValidMove(int ixP, int iyP, int fxP, int fyP);
 		
 		public void makeMove(String iP, String fP)
 		{
 			
-			int y1 = Integer.parseInt(iP,1)-1;
-			 int x1;
+			 int iy1 = Integer.parseInt(iP,1)-1;
+			 int ix1 = 0;
 			 
 			 switch(iP.substring(0,1))
 			 {
 			 case "A":
-				 x1 = 0;
+				 ix1 = 7;
 				 break;
 			 case "B":
-				 x1 = 1;
+				 ix1 = 6;
 				 break;
 			 case "C":
-				 x1 = 2;
+				 ix1 = 5;
 				 break;
 			 case "D":
-				 x1 = 3;
+				 ix1 = 4;
 				 break;
 			 case "E":
-				 x1 = 4;
+				 ix1 = 3;
 				 break;
 			 case "F":
-				 x1 = 5;
+				 ix1 = 2;
 				 break;
 			 case "G":
-				 x1 = 6;
+				 ix1 = 1;
 				 break;
 			 case "H":
-				 x1 = 7;
+				 ix1 = 0;
 				 break;
 			 }
 			 
 			 
 			 
-			 int y2 = Integer.parseInt(fP,1) -1;
-			 int x2;
+			 int iy2 = Integer.parseInt(fP,1) -1;
+			 int ix2 = 0;
 			 
 			 switch(fP.substring(0,1))
 			 {
 			 case "A":
-				 x1 = 0;
+				 ix2 = 7;
 				 break;
 			 case "B":
-				 x1 = 1;
+				 ix2 = 6;
 				 break;
 			 case "C":
-				 x1 = 2;
+				 ix2 = 5;
 				 break;
 			 case "D":
-				 x1 = 3;
+				 ix2 = 4;
 				 break;
 			 case "E":
-				 x1 = 4;
+				 ix2 = 3;
 				 break;
 			 case "F":
-				 x1 = 5;
+				 ix2 = 2;
 				 break;
 			 case "G":
-				 x1 = 6;
+				 ix2 = 1;
 				 break;
 			 case "H":
-				 x1 = 7;
+				 ix2 = 0;
 				 break;
 			 }
 			 
-			 isValidMove()
+			 this.isValidMove(ix1, iy1, ix2, iy2);
 			 
 			 
 		}
