@@ -13,60 +13,123 @@ public class Pawn extends Piece
 		name = "Pawn";
 		abr = "P";
 	}
+	
+	public Pawn(int xC, int yC, String c, String a)
+	{
+		isFirstMove = true;
+		xCoord =xC;
+		yCoord = yC;
+		color = c;
+		name = "Pawn";
+		abr = a;
+	}
 
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		
-		if(((ixP+1 ==fxP||ixP-1 ==fxP)&& iyP+1 ==fyP)/*If diagonal and up 1*/|| (ixP+1 ==fxP&& iyP ==fyP)/*Checks to see if goes up one*/ ||(ixP+2 ==fxP&& iyP ==fyP)/*Checks to see if goes up two*/)
+		//if(((ixP+1 ==fxP||ixP-1 ==fxP)&& iyP+1 ==fyP)/*If diagonal and up 1*/|| (ixP+1 ==fxP&& iyP ==fyP)/*Checks to see if goes up one*/ ||(ixP+2 ==fxP&& iyP ==fyP)/*Checks to see if goes up two*/)
 			{
 		
+			if(this.color.equals("White"))
+				{
+				if(ixP-1 == fxP && iyP == fyP)/* x + 1 same y*/
+					{
+					
+					if(ChessMain.board[fxP][fyP] instanceof Empty)
+						{
+						
+						return true;
+			
+						}
+						
+					}
+			
+				else if(ixP-1 == fxP && iyP+1 == fyP)/* x + 1 right 1*/
+					{
+					
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+						{
+						
+						return true;
+			
+						}
+						
+					}
+			
+				else if(ixP-1 == fxP && iyP-1 == fyP)/* x + 1  left 1*/
+					{
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+						{
+						
+						return true;
+			
+						}
+						
+					}
 				
-			if(ixP+1 == fxP && iyP == fyP)/* x + 1 same y*/
-				{
-					
-				if(ChessMain.board[fxP][fyP] instanceof Empty)
+				else if(ixP-2 == fxP && iyP == fyP)/* x + 2 same y*/
 					{
-						
+					
+					if(ChessMain.board[fxP][fyP] instanceof Empty && ChessMain.board[fxP - 1][fyP] instanceof Empty)
+						{
+				
 						return true;
 			
-					}
+						}
 						
+					}
+			
 				}
 			
-			if(ixP+1 == fxP && iyP+1 == fyP)/* x + 1 same y*/
+			if(this.color.equals("Black"))
 				{
-					
-				if(ChessMain.board[fxP][fyP] instanceof Empty)
+				if(ixP+1 == fxP && iyP == fyP)/* x + 1 same y*/
 					{
+					if(ChessMain.board[fxP][fyP] instanceof Empty)
+						{
+					
+						return true;
+		
+						}
+					
+					}
+		
+				if(ixP+1 == fxP && iyP+1 == fyP)/* x + 1 right 1*/
+					{
+				
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+						{
 						
 						return true;
-			
-					}
-						
-				}
-			
-			if(ixP+1 == fxP && iyP-1 == fyP)/* x + 1 same y*/
-				{
+		
+						}
 					
-				if(ChessMain.board[fxP][fyP] instanceof Empty)
-					{
-						
-						return true;
-			
 					}
-						
-				}
-			
-			if(ixP+2 == fxP && iyP == fyP)/* x + 1 same y*/
-				{
+		
+				if(ixP+1 == fxP && iyP-1 == fyP)/* x + 1  left 1*/
+					{
+				
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+						{
 					
-				if(ChessMain.board[fxP][fyP] instanceof Empty)
-					{
-						
 						return true;
-			
+		
+						}
+					
 					}
-						
+		
+				if(ixP+2 == fxP && iyP == fyP)/* x + 2 same y*/
+					{
+					
+					if(ChessMain.board[fxP][fyP] instanceof Empty && ChessMain.board[ixP + 1][fyP] instanceof Empty)
+						{
+					
+						return true;
+		
+						}
+					
+					}
+		
 				}
 			
 			}

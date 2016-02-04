@@ -12,19 +12,23 @@ public abstract class Piece
 		
 		public abstract boolean isValidMove(int ixP, int iyP, int fxP, int fyP);
 		
-		public void makeMove(String iP, String fP)
+		public void makeMove(int ix1, int iy1, int ix2, int iy2)
 		{
 			
 			 
 			 
-			 if(this.isValidMove(ix1, iy1, ix2, iy2) == true)
+			if(this.isValidMove(ix1, iy1, ix2, iy2) == true)
 				 {
-					 
 				 ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
 				 ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
-					 
+				 	 
 				 }
+			else
+				{
+				System.out.println("Please enter a valid move");
+				}
 			 
+			 /*Check to see if puts in checkmate */
 			 
 		}
  

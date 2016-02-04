@@ -3,23 +3,34 @@ import java.util.*;
 public class ChessMain
 	{
 	static Piece[][] board = new Piece[8][8];
+	static boolean playing = true;
+	static String currentColor = "White";
 		public static void main(String[] args)
 			{
 			
 			
-			
+				
 				/*Chess move format is as follows
 				*You state the position of the piece you wish to move.
 				*Followed by the position you would like to move it too.
 				*If piece cannot be moved there possibly give a reason why?
 				Take the move again without printing the board*/
-				addBlackPieces();
-				addWhitePieces();
+				//addBlackPieces();
+				//addWhitePieces();
+				addWhiteUniCode();
+				addBlackUniCode();
 				addEmptySpaces();
 				
-				printBoard();
-				takeMove();
-				printBoard();
+				while(playing)
+					{
+					currentColor = "White";
+					printBoard();
+					takeMove();
+					currentColor = "Black";
+					printBoard();
+					takeMove();
+					}
+				
 
 			}
 		public static void takeMove()
@@ -30,80 +41,161 @@ public class ChessMain
 			 String iP = move[0];
 			 String fP = move[1];
 			 
-			 int iy1 = Integer.parseInt(iP,1)-1;
-			 int ix1 = 0;
+			 String t1 = iP.substring(1,2);
 			 
-			 switch(iP.substring(0,1))
+			 int ix1 = Integer.parseInt(t1);
+			 int iy1 = 0;
+			 
+			 switch(ix1)
 			 {
-			 case "A":
+			 case 1:
 				 ix1 = 7;
 				 break;
-			 case "B":
+			 case 2:
 				 ix1 = 6;
 				 break;
-			 case "C":
+			 case 3:
 				 ix1 = 5;
 				 break;
-			 case "D":
+			 case 4:
 				 ix1 = 4;
 				 break;
-			 case "E":
+			 case 5:
 				 ix1 = 3;
 				 break;
-			 case "F":
+			 case 6:
 				 ix1 = 2;
 				 break;
-			 case "G":
+			 case 7:
 				 ix1 = 1;
 				 break;
-			 case "H":
+			 case 8:
 				 ix1 = 0;
 				 break;
 			 }
-			 
-			 
-			 
-			 int iy2 = Integer.parseInt(fP,1) -1;
-			 int ix2 = 0;
-			 
-			 switch(fP.substring(0,1))
+	
+			 switch(iP.substring(0,1))
 			 {
 			 case "A":
-				 ix2 = 7;
+			 case "a":
+				 iy1 = 0;
 				 break;
 			 case "B":
-				 ix2 = 6;
+			 case "b":
+				 iy1 = 1;
 				 break;
 			 case "C":
-				 ix2 = 5;
+			 case "c":
+				 iy1 = 2;
 				 break;
 			 case "D":
-				 ix2 = 4;
+			 case "d":
+				 iy1 = 3;
 				 break;
 			 case "E":
-				 ix2 = 3;
+			 case "e":
+				 iy1 = 4;
 				 break;
 			 case "F":
-				 ix2 = 2;
+			 case "f":
+				 iy1 = 5;
 				 break;
 			 case "G":
-				 ix2 = 1;
+			 case "g":
+				 iy1 = 6;
 				 break;
 			 case "H":
+			 case "h":
+				 iy1 = 7;
+				 break;
+			 }
+
+			 
+			 String t2 = fP.substring(1,2);
+			 int ix2 = Integer.parseInt(t2);
+			 int iy2 = 0;
+			 
+			 switch(ix2)
+			 {
+			 case 1:
+				 ix2 = 7;
+				 break;
+			 case 2:
+				 ix2 = 6;
+				 break;
+			 case 3:
+				 ix2 = 5;
+				 break;
+			 case 4:
+				 ix2 = 4;
+				 break;
+			 case 5:
+				 ix2 = 3;
+				 break;
+			 case 6:
+				 ix2 = 2;
+				 break;
+			 case 7:
+				 ix2 = 1;
+				 break;
+			 case 8:
 				 ix2 = 0;
 				 break;
 			 }
 			 
+			 switch(fP.substring(0,1))
+			 {
+			 case "A":
+			 case "a":
+				 iy2 = 0;
+				 break;
+			 case "B":
+			 case "b":
+				 iy2 = 1;
+				 break;
+			 case "C":
+			 case "c":
+				 iy2 = 2;
+				 break;
+			 case "D":
+			 case "d":
+				 iy2 = 3;
+				 break;
+			 case "E":
+			 case "e":
+				 iy2 = 4;
+				 break;
+			 case "F":
+			 case "f":
+				 iy2 = 5;
+				 break;
+			 case "G":
+			 case "g":
+				 iy2 = 6;
+				 break;
+			 case "H":
+			 case "h":
+				 iy2 = 7;
+				 break;
+			 }
+		if(board[ix1][iy1].getColor().equals(currentColor))
+			{	
 			 
-			 
-		 makeMove(ix1, iy1, ix2, iy2);
+			board[ix1][iy1].makeMove(ix1, iy1, ix2, iy2);
+			
+			}
+		else
+			{
+			System.out.println("It is not your turn to move");
+			takeMove();
+			}
 			
 		}
 		
 		public static void printBoard()
 		{
 			
-			for(int yCoord =0; yCoord<8; yCoord++)
+			for(int xCoord =0; xCoord<8; xCoord++)
 			{
 				System.out.println("    _______________________________________________________________");
 				System.out.print("   ");
@@ -113,7 +205,7 @@ public class ChessMain
 					}
 				System.out.println();
 				
-				switch(yCoord)
+				switch(xCoord)
 				{
 				case 0:
 					System.out.print("8");
@@ -144,11 +236,12 @@ public class ChessMain
 				}
 				
 				System.out.print("  |");
-				for(int xCoord = 0; xCoord<8; xCoord++)
+				for(int yCoord = 0; yCoord<8; yCoord++)
 				{
-				
-				System.out.print("   " + board[yCoord][xCoord].getAbr() + "   |");	
-			
+				if(!board[xCoord][yCoord].getAbr().equals(" "))
+				System.out.print("   " + board[xCoord][yCoord].getAbr() + "      |");	
+				else
+					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}
 				System.out.println();
 				System.out.print("   ");
@@ -198,9 +291,30 @@ public class ChessMain
 			System.out.println();
 		}
 
+		public static void addBlackUniCode()
+		{
+			
+		board[0][0] = new Rook(0,0, "Black","\u265C ");
+		board[0][1] = new Knight(0,1,"Black","\u265E ");
+		board[0][2] = new Bishop(0,2,"Black","\u265D ");
+		board[0][3] = new Queen(0,3,"Black","\u265B ");
+		board[0][4] = new King(0,4,"Black","\u265A ");
+		board[0][5] = new Bishop(0,5,"Black","\u265D ");
+		board[0][6] = new Knight(0,6,"Black","\u265E ");
+		board[0][7] = new Rook(0,7,"Black","\u265C ");
 		
+		board[1][0] = new Pawn(1,0,"Black","\u265F ");
+		board[1][1] = new Pawn(1,0,"Black","\u265F ");
+		board[1][2] = new Pawn(1,0,"Black","\u265F ");
+		board[1][3] = new Pawn(1,0,"Black","\u265F ");
+		board[1][4] = new Pawn(1,0,"Black","\u265F ");
+		board[1][5] = new Pawn(1,0,"Black","\u265F ");
+		board[1][6] = new Pawn(1,0,"Black","\u265F ");
+		board[1][7] = new Pawn(1,0,"Black","\u265F ");
+				
+		}
 		
-		public static void addWhitePieces()
+		public static void addBlackPieces()
 		{
 			
 		board[0][0] = new Rook(0,0, "Black");
@@ -223,7 +337,28 @@ public class ChessMain
 				
 		}
 		
-		public static void addBlackPieces()
+		public static void addWhiteUniCode()
+		{
+			board[7][0] = new Rook(7,0,"White","\u2656 ");
+			board[7][1] = new Knight(7,1,"White","\u2658 ");
+			board[7][2] = new Bishop(7,2,"White","\u2657 ");
+			board[7][3] = new Queen(7,3,"White","\u2655 ");
+			board[7][4] = new King(7,4,"White","\u2654 ");
+			board[7][5] = new Bishop(7,5,"White","\u2657 ");
+			board[7][6] = new Knight(7,6,"White","\u2658 ");
+			board[7][7] = new Rook(7,7,"White","\u2656 ");
+			
+			board[6][0] = new Pawn(6,0,"White","\u2659 ");
+			board[6][1] = new Pawn(6,1,"White","\u2659 ");
+			board[6][2] = new Pawn(6,2,"White","\u2659 ");
+			board[6][3] = new Pawn(6,3,"White","\u2659 ");
+			board[6][4] = new Pawn(6,4,"White","\u2659 ");
+			board[6][5] = new Pawn(6,5,"White","\u2659 ");
+			board[6][6] = new Pawn(6,6,"White","\u2659 ");
+			board[6][7] = new Pawn(6,7,"White","\u2659 ");	
+		}
+		
+		public static void addWhitePieces()
 		{
 		board[7][0] = new Rook(7,0,"White");
 		board[7][1] = new Knight(7,1,"White");
