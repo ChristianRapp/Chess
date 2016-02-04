@@ -25,6 +25,48 @@ public class Knight extends Piece {
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		
+		if((ixP + 2 == fxP && iyP + 1 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		if((ixP + 2 == fxP && iyP - 1 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		if((ixP + 1 == fxP && iyP + 2 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		if((ixP + 1 == fxP && iyP - 2 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		
+		if((ixP - 2 == fxP && iyP + 1 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		if((ixP - 2 == fxP && iyP - 1 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		if((ixP - 1 == fxP && iyP + 2 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		if((ixP - 1 == fxP && iyP - 2 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))
+			{
+			return true;	
+			}
+		
+		
 		return false;
 		
 	}

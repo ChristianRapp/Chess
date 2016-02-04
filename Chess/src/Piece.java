@@ -26,6 +26,7 @@ public abstract class Piece
 			else
 				{
 				System.out.println("Please enter a valid move");
+				ChessMain.takeMove();
 				}
 			 
 			 /*Check to see if puts in checkmate */

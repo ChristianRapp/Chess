@@ -34,7 +34,7 @@ public class ChessMain
 
 			}
 		public static void takeMove()
-		{
+			{
 			 Scanner userMove = new Scanner(System.in);
 			 String[] move = userMove.nextLine().split(" ");
 			 
@@ -47,56 +47,56 @@ public class ChessMain
 			 int iy1 = 0;
 			 
 			 switch(ix1)
-			 {
-			 case 1:
-				 ix1 = 7;
-				 break;
-			 case 2:
-				 ix1 = 6;
-				 break;
-			 case 3:
-				 ix1 = 5;
-				 break;
-			 case 4:
-				 ix1 = 4;
-				 break;
-			 case 5:
-				 ix1 = 3;
-				 break;
-			 case 6:
-				 ix1 = 2;
-				 break;
-			 case 7:
-				 ix1 = 1;
-				 break;
-			 case 8:
-				 ix1 = 0;
-				 break;
-			 }
+			 	{
+			 	case 1:
+			 		ix1 = 7;
+			 		break;
+			 	case 2:
+			 		ix1 = 6;
+			 		break;
+			 	case 3:
+			 		ix1 = 5;
+			 		break;
+			 	case 4:
+			 		ix1 = 4;
+			 		break;
+			 	case 5:
+			 		ix1 = 3;
+				 	break;
+			 	case 6:
+			 		ix1 = 2;
+			 		break;
+			 	case 7:
+			 		ix1 = 1;
+				 	break;
+			 	case 8:
+			 		ix1 = 0;
+			 		break;
+			 	}
 	
 			 switch(iP.substring(0,1))
-			 {
-			 case "A":
-			 case "a":
-				 iy1 = 0;
-				 break;
-			 case "B":
-			 case "b":
-				 iy1 = 1;
-				 break;
-			 case "C":
-			 case "c":
-				 iy1 = 2;
-				 break;
-			 case "D":
-			 case "d":
-				 iy1 = 3;
-				 break;
-			 case "E":
-			 case "e":
-				 iy1 = 4;
-				 break;
-			 case "F":
+			 	{
+			 	case "A":
+			 	case "a":
+			 		iy1 = 0;
+			 		break;
+			 	case "B":
+			 	case "b":
+			 		iy1 = 1;
+			 		break;
+			 	case "C":
+			 	case "c":
+			 		iy1 = 2;
+			 		break;
+			 	case "D":
+			 	case "d":
+			 		iy1 = 3;
+			 		break;
+			 	case "E":
+			 	case "e":
+			 		iy1 = 4;
+			 		break;
+			 	case "F":
 			 case "f":
 				 iy1 = 5;
 				 break;
@@ -239,7 +239,7 @@ public class ChessMain
 				for(int yCoord = 0; yCoord<8; yCoord++)
 				{
 				if(!board[xCoord][yCoord].getAbr().equals(" "))
-				System.out.print("   " + board[xCoord][yCoord].getAbr() + "      |");	
+				System.out.print("   " + board[xCoord][yCoord].getAbr() + "\u2009" +"\u2009" +"   |");	
 				else
 					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}
