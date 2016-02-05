@@ -22,6 +22,11 @@ public class Knight extends Piece {
 		abr = a;
 	}
 	
+	public Knight()
+	{
+		
+	}
+	
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		

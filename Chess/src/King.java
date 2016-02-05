@@ -21,6 +21,11 @@ public class King extends Piece{
 		abr = a;
 	}
 	
+	public King()
+	{
+		
+	}
+	
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		

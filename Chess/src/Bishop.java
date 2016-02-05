@@ -12,6 +12,11 @@ public class Bishop extends Piece {
 		abr = "B";
 	}
 	
+	public Bishop()
+	{
+		
+	}
+	
 	public Bishop(int xC, int yC, String c, String a)
 	{
 		isFirstMove = true;

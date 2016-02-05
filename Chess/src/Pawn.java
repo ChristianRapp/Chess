@@ -4,14 +4,9 @@ public class Pawn extends Piece
 {
 
 
-	public Pawn(int xC, int yC, String c)
+	public Pawn()
 	{
-		isFirstMove = true;
-		xCoord =xC;
-		yCoord = yC;
-		color = c;
-		name = "Pawn";
-		abr = "P";
+		
 	}
 	
 	public Pawn(int xC, int yC, String c, String a)

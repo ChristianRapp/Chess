@@ -11,6 +11,10 @@ public class Rook extends Piece{
 		name = "Rook";
 		abr = "R";
 	}
+	public Rook()
+	{
+		
+	}
 	
 	public Rook(int xC, int yC, String c, String a)
 	{

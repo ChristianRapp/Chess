@@ -22,6 +22,11 @@ public class Queen extends Piece {
 		abr = a;
 	}
 	
+	public Queen()
+	{
+		
+	}
+	
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		

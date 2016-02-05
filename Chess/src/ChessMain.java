@@ -8,8 +8,8 @@ public class ChessMain
 		public static void main(String[] args)
 			{
 			
-			
-				
+				System.out.println("\u2656 ");
+				System.out.println("\u265C ");
 				/*Chess move format is as follows
 				*You state the position of the piece you wish to move.
 				*Followed by the position you would like to move it too.
@@ -238,9 +238,11 @@ public class ChessMain
 				System.out.print("  |");
 				for(int yCoord = 0; yCoord<8; yCoord++)
 				{
-				if(!board[xCoord][yCoord].getAbr().equals(" "))
+					
+				if(!board[xCoord][yCoord].getAbr().equals(" ")){
+					
 				System.out.print("   " + board[xCoord][yCoord].getAbr() + "\u2009" +"\u2009" +"   |");	
-				else
+				}else
 					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}
 				System.out.println();
@@ -294,91 +296,50 @@ public class ChessMain
 		public static void addBlackUniCode()
 		{
 			
-		board[0][0] = new Rook(0,0, "Black","\u265C ");
-		board[0][1] = new Knight(0,1,"Black","\u265E ");
-		board[0][2] = new Bishop(0,2,"Black","\u265D ");
-		board[0][3] = new Queen(0,3,"Black","\u265B ");
-		board[0][4] = new King(0,4,"Black","\u265A ");
-		board[0][5] = new Bishop(0,5,"Black","\u265D ");
-		board[0][6] = new Knight(0,6,"Black","\u265E ");
-		board[0][7] = new Rook(0,7,"Black","\u265C ");
+		board[0][0] = new BlackRook(0,0);
+		board[0][1] = new BlackKnight(0,1);
+		board[0][2] = new BlackBishop(0,2);
+		board[0][3] = new BlackQueen(0,3);
+		board[0][4] = new BlackKing(0,4);
+		board[0][5] = new BlackBishop(0,5);
+		board[0][6] = new BlackKnight(0,6);
+		board[0][7] = new BlackRook(0,7);
 		
-		board[1][0] = new Pawn(1,0,"Black","\u265F ");
-		board[1][1] = new Pawn(1,0,"Black","\u265F ");
-		board[1][2] = new Pawn(1,0,"Black","\u265F ");
-		board[1][3] = new Pawn(1,0,"Black","\u265F ");
-		board[1][4] = new Pawn(1,0,"Black","\u265F ");
-		board[1][5] = new Pawn(1,0,"Black","\u265F ");
-		board[1][6] = new Pawn(1,0,"Black","\u265F ");
-		board[1][7] = new Pawn(1,0,"Black","\u265F ");
+		board[1][0] = new BlackPawn(1,0);
+		board[1][1] = new BlackPawn(1,1);
+		board[1][2] = new BlackPawn(1,2);
+		board[1][3] = new BlackPawn(1,3);
+		board[1][4] = new BlackPawn(1,4);
+		board[1][5] = new BlackPawn(1,5);
+		board[1][6] = new BlackPawn(1,6);
+		board[1][7] = new BlackPawn(1,7);
 				
 		}
 		
-		public static void addBlackPieces()
-		{
-			
-		board[0][0] = new Rook(0,0, "Black");
-		board[0][1] = new Knight(0,1,"Black");
-		board[0][2] = new Bishop(0,2,"Black");
-		board[0][3] = new Queen(0,3,"Black");
-		board[0][4] = new King(0,4,"Black");
-		board[0][5] = new Bishop(0,5,"Black");
-		board[0][6] = new Knight(0,6,"Black");
-		board[0][7] = new Rook(0,7,"Black");
-		
-		board[1][0] = new Pawn(1,0,"Black");
-		board[1][1] = new Pawn(1,0,"Black");
-		board[1][2] = new Pawn(1,0,"Black");
-		board[1][3] = new Pawn(1,0,"Black");
-		board[1][4] = new Pawn(1,0,"Black");
-		board[1][5] = new Pawn(1,0,"Black");
-		board[1][6] = new Pawn(1,0,"Black");
-		board[1][7] = new Pawn(1,0,"Black");
-				
-		}
 		
 		public static void addWhiteUniCode()
 		{
-			board[7][0] = new Rook(7,0,"White","\u2656 ");
-			board[7][1] = new Knight(7,1,"White","\u2658 ");
-			board[7][2] = new Bishop(7,2,"White","\u2657 ");
-			board[7][3] = new Queen(7,3,"White","\u2655 ");
-			board[7][4] = new King(7,4,"White","\u2654 ");
-			board[7][5] = new Bishop(7,5,"White","\u2657 ");
-			board[7][6] = new Knight(7,6,"White","\u2658 ");
-			board[7][7] = new Rook(7,7,"White","\u2656 ");
+			board[7][0] = new WhiteRook(7,0);
+			board[7][1] = new WhiteKnight(7,1);
+			board[7][2] = new WhiteBishop(7,2);
+			board[7][3] = new WhiteQueen(7,3);
+			board[7][4] = new WhiteKing(7,4);
+			board[7][5] = new WhiteBishop(7,5);
+			board[7][6] = new WhiteKnight(7,6);
+			board[7][7] = new WhiteRook(7,7);
 			
-			board[6][0] = new Pawn(6,0,"White","\u2659 ");
-			board[6][1] = new Pawn(6,1,"White","\u2659 ");
-			board[6][2] = new Pawn(6,2,"White","\u2659 ");
-			board[6][3] = new Pawn(6,3,"White","\u2659 ");
-			board[6][4] = new Pawn(6,4,"White","\u2659 ");
-			board[6][5] = new Pawn(6,5,"White","\u2659 ");
-			board[6][6] = new Pawn(6,6,"White","\u2659 ");
-			board[6][7] = new Pawn(6,7,"White","\u2659 ");	
+			
+			
+			board[6][0] = new WhitePawn(6,0);
+			board[6][1] = new WhitePawn(6,1);
+			board[6][2] = new WhitePawn(6,2);
+			board[6][3] = new WhitePawn(6,3);
+			board[6][4] = new WhitePawn(6,4);
+			board[6][5] = new WhitePawn(6,5);
+			board[6][6] = new WhitePawn(6,6);
+			board[6][7] = new WhitePawn(6,7);	
 		}
 		
-		public static void addWhitePieces()
-		{
-		board[7][0] = new Rook(7,0,"White");
-		board[7][1] = new Knight(7,1,"White");
-		board[7][2] = new Bishop(7,2,"White");
-		board[7][3] = new Queen(7,3,"White");
-		board[7][4] = new King(7,4,"White");
-		board[7][5] = new Bishop(7,5,"White");
-		board[7][6] = new Knight(7,6,"White");
-		board[7][7] = new Rook(7,7,"White");
-		
-		board[6][0] = new Pawn(6,0,"White");
-		board[6][1] = new Pawn(6,1,"White");
-		board[6][2] = new Pawn(6,2,"White");
-		board[6][3] = new Pawn(6,3,"White");
-		board[6][4] = new Pawn(6,4,"White");
-		board[6][5] = new Pawn(6,5,"White");
-		board[6][6] = new Pawn(6,6,"White");
-		board[6][7] = new Pawn(6,7,"White");
-			
-		}
 		
 		public static void addEmptySpaces()
 		{
