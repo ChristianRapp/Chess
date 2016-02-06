@@ -7,9 +7,8 @@ public class ChessMain
 	static String currentColor = "White";
 		public static void main(String[] args)
 			{
-			
-				System.out.println("\u2656 ");
-				System.out.println("\u265C ");
+				
+				
 				/*Chess move format is as follows
 				*You state the position of the piece you wish to move.
 				*Followed by the position you would like to move it too.
@@ -20,6 +19,7 @@ public class ChessMain
 				addWhiteUniCode();
 				addBlackUniCode();
 				addEmptySpaces();
+				System.out.println(board[7][7].getColor());
 				
 				while(playing)
 					{
@@ -180,7 +180,7 @@ public class ChessMain
 			 }
 		if(board[ix1][iy1].getColor().equals(currentColor))
 			{	
-			 
+			System.out.println("TEST");
 			board[ix1][iy1].makeMove(ix1, iy1, ix2, iy2);
 			
 			}
@@ -241,7 +241,7 @@ public class ChessMain
 					
 				if(!board[xCoord][yCoord].getAbr().equals(" ")){
 					
-				System.out.print("   " + board[xCoord][yCoord].getAbr() + "\u2009" +"\u2009" +"   |");	
+				System.out.print("   " + board[xCoord][yCoord].getAbr() + "\u2009" +"\u2009"+"\u2009" +"\u2009"+"\u2009"+"  |");	
 				}else
 					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}

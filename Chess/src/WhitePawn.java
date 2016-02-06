@@ -9,7 +9,7 @@ public class WhitePawn extends Pawn
 				yCoord = yC;
 				color = "White";
 				name = "Pawn";
-				abr = "\u265F ";
+				abr = "\u2659 ";
 				
 			}
 		

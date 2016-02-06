@@ -9,7 +9,7 @@ public class BlackQueen extends Queen
 				yCoord = yC;
 				color = "Black";
 				name = "Queen";
-				abr = "\u2655 ";
+				abr = "\u265B ";
 			}
 		
 		

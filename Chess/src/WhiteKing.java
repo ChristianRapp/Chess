@@ -10,7 +10,7 @@ public class WhiteKing extends King
 				yCoord = yC;
 				color = "White";
 				name = "King";
-				abr = "\u265A ";
+				abr = "\u2654 ";
 			}
 		
 	}

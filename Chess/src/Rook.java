@@ -29,10 +29,76 @@ public class Rook extends Piece{
 	
 	
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
-	{
+		{
 		
-		return false;
+		Boolean isNotBlocked = true;
 		
-	}
+		if(ixP == fxP && iyP < fyP)
+			{
+			
+			for(int i=iyP; i<fyP; i++)
+			{
+			if(ChessMain.board[ixP][i] instanceof Empty)
+			{
+				
+			}
+			else
+				isNotBlocked = false;
+			}
+			
+			}
+			
+		
+		if(iyP == fyP && ixP < fxP)
+			{
+			
+			for(int i=ixP; i<fxP; i++)
+			{
+			if(ChessMain.board[i][iyP] instanceof Empty)
+			{
+				
+			}
+			else
+				isNotBlocked = false;
+			}
+			
+			}
+		
+		if(ixP == fxP && iyP > fyP)
+		{
+		
+		for(int i=iyP; i>fyP; i--)
+		{
+		if(ChessMain.board[ixP][i] instanceof Empty)
+		{
+			
+		}
+		else
+			isNotBlocked = false;
+		}
+		
+		}
+		
+		
+		
+		
+		if(iyP == fyP && ixP > fxP)
+		{
+		
+		for(int i=ixP; i>fxP; i--)
+		{
+		if(ChessMain.board[i][iyP] instanceof Empty)
+		{
+			
+		}
+		else
+			isNotBlocked = false;
+		}
+		
+		}
+		
+		return isNotBlocked;
+		
+		}
 	
 }

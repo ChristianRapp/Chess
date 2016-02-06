@@ -10,7 +10,7 @@ public class BlackKnight extends Knight
 				yCoord = yC;
 				color = "Black";
 				name = "Knight";
-				abr = "\u2658 " ;
+				abr = "\u265E ";
 			}
 		
 	}

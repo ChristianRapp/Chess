@@ -9,7 +9,7 @@ public class BlackRook extends Rook
 				yCoord = yC;
 				color = "Black";
 				name = "Rook";
-				abr = "\u2656 ";
+				abr = "\u265C ";
 			}
 		
 		

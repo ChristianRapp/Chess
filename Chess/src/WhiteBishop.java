@@ -9,7 +9,7 @@ public class WhiteBishop extends Bishop
 				yCoord = yC;
 				color = "White";
 				name = "Bishop";
-				abr = "\u265D ";
+				abr = "\u2657 ";
 			}
 		
 		

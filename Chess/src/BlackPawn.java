@@ -10,7 +10,7 @@ public class BlackPawn extends Pawn
 				yCoord = yC;
 				color = "Black";
 				name = "Pawn";
-				abr = "\u2659 ";
+				abr = "\u265F ";
 				
 			}
 		

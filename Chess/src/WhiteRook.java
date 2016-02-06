@@ -7,9 +7,9 @@ public class WhiteRook extends Rook
 				isFirstMove = true;
 				xCoord =xC;
 				yCoord = yC;
-				color = "Black";
+				color = "White";
 				name = "Rook";
-				abr = "\u265C ";
+				abr = "\u2656 ";
 			}
 		
 		
