@@ -30,7 +30,147 @@ public class Bishop extends Piece {
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		
-		return false;
+		boolean isNotBlocked = false;
+		
+		double ratioX;
+		
+		if(fxP > ixP)
+			ratioX= fxP - ixP;
+		
+		else if(ixP > fxP)
+			ratioX = ixP -fxP;
+		
+		else
+			ratioX = 0;
+		
+		
+		double ratioY;
+		
+		if(fyP > iyP)
+			ratioY= fyP - iyP;
+		
+		else if(iyP > fyP)
+			ratioY = iyP -fyP;
+		
+		else
+			ratioY = 0;
+		
+		if(ratioX % ratioY == 0)
+			{
+			isNotBlocked = true;
+			int ix;
+			int iy;
+			if(fxP > ixP && fyP > iyP)
+				{
+				ix = ixP;
+				iy = iyP;
+			
+				while(iy < fyP && ix < fxP)
+					{
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+						System.out.println("Test");	
+						}
+					else
+						{
+						isNotBlocked = false;
+						}
+					iy++;
+					ix++;
+					}
+				
+				}
+			
+			
+			else if(fxP > ixP && fyP < iyP)
+				{
+				ix = ixP;
+				iy = fyP;
+
+				while(iy < iyP && ix < fxP)
+					{
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+							
+						}
+					else
+						{
+						isNotBlocked = false;
+						}
+					iy++;
+					ix++;
+					}
+				
+				}
+			
+			
+			else if(fxP < ixP && fyP > iyP)
+				{
+				ix = fxP;
+				iy = iyP;
+				
+				/* DO STUFF HERE */
+
+				while(iy < fyP && ix < ixP)
+					{
+	
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+						
+						
+						}
+					else
+						{
+					
+						isNotBlocked = false;
+						}
+						iy++;
+						ix++;
+					}
+				
+				}
+			
+			
+			else if(fxP < ixP && fyP < iyP)
+				{
+				ix = fxP;
+				iy = fyP;
+
+				while(iy < iyP && ix < ixP)
+					{
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+							
+						}
+					else
+						{
+						isNotBlocked = false;
+						}
+					iy++;
+					ix++;
+					}
+				
+				}
+				
+				
+			if(ChessMain.board[fxP][fyP] instanceof Empty || !(ChessMain.board[fxP][fyP].color == this.color))
+				{
+					
+				}
+			
+			else
+				{
+				isNotBlocked = false;
+				}
+			
+				
+			}
+		
+		
+		
+		
+		
+		return isNotBlocked;
 		
 	}
 
