@@ -180,7 +180,7 @@ public class ChessMain
 			 }
 		if(board[ix1][iy1].getColor().equals(currentColor))
 			{	
-			System.out.println("TEST");
+	
 			board[ix1][iy1].makeMove(ix1, iy1, ix2, iy2);
 			
 			}

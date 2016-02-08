@@ -36,14 +36,13 @@ public class Rook extends Piece{
 		if(ixP == fxP && iyP < fyP)
 			{
 			
-			for(int i=iyP; i<fyP; i++)
+			for(int i=iyP +1; i<fyP; i++)
 			{
 			if(ChessMain.board[ixP][i] instanceof Empty)
-			{
-				
+			{	
 			}
-			else
-				isNotBlocked = false;
+			else{
+				isNotBlocked = false;}
 			}
 			
 			}
@@ -52,7 +51,7 @@ public class Rook extends Piece{
 		if(iyP == fyP && ixP < fxP)
 			{
 			
-			for(int i=ixP; i<fxP; i++)
+			for(int i=ixP +1; i<fxP; i++)
 			{
 			if(ChessMain.board[i][iyP] instanceof Empty)
 			{
@@ -67,7 +66,7 @@ public class Rook extends Piece{
 		if(ixP == fxP && iyP > fyP)
 		{
 		
-		for(int i=iyP; i>fyP; i--)
+		for(int i=iyP -1; i>fyP; i--)
 		{
 		if(ChessMain.board[ixP][i] instanceof Empty)
 		{
@@ -85,14 +84,13 @@ public class Rook extends Piece{
 		if(iyP == fyP && ixP > fxP)
 		{
 		
-		for(int i=ixP; i>fxP; i--)
+		for(int i=ixP -1; i>fxP; i--)
 		{
 		if(ChessMain.board[i][iyP] instanceof Empty)
-		{
-			
+		{	
 		}
-		else
-			isNotBlocked = false;
+		else{
+			isNotBlocked = false;}
 		}
 		
 		}
