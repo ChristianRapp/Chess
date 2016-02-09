@@ -30,6 +30,12 @@ public class Queen extends Piece {
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		
+		if(Rook.isValidMove(ixP, iyP, fxP, fyP) || Bishop.isValidMove(ixP, iyP, fxP, fyP))
+		{
+			return true;
+		}
+		
+		
 		return false;
 		
 	}

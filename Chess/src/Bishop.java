@@ -64,18 +64,18 @@ public class Bishop extends Piece {
 			
 			if(fxP > ixP && fyP > iyP)
 				{
-				ix = ixP;
-				iy = iyP;
+				ix = ixP+1;
+				iy = iyP+1;
 			
 				while(iy < fyP && ix < fxP)
 					{
 					if(ChessMain.board[ix][iy] instanceof Empty)
 						{
-						 System.out.println("Work" + ix + " " + iy);
+						
 						}
 					else
 						{
-							System.out.println("Doesnt Work" + ix + " " + iy);
+							
 						isNotBlocked = false;
 						}
 					iy++;
@@ -87,10 +87,10 @@ public class Bishop extends Piece {
 			
 			else if(fxP > ixP && fyP < iyP)
 				{
-				ix = ixP;
-				iy = iyP;
-
-				while(iy < iyP && ix < fxP)
+				ix = ixP+1;
+				iy = iyP-1;
+				
+				while(iy > fyP && ix < fxP)
 					{
 					if(ChessMain.board[ix][iy] instanceof Empty)
 						{
@@ -109,22 +109,22 @@ public class Bishop extends Piece {
 			
 			else if(fxP < ixP && fyP > iyP)
 				{
-				ix = ixP;
-				iy = iyP;
+				ix = ixP-1;
+				iy = iyP+1;
 				
 				/* DO STUFF HERE */
-				System.out.println("Test");
-				while(iy < fyP && ix < ixP)
+				
+				while(iy < fyP && ix > fxP)
 					{
-					System.out.println("HEllo");
+					
 					if(ChessMain.board[ix][iy] instanceof Empty)
 						{
 						
-							System.out.println("Work" + ix + " " + iy);
+							
 						}
 					else
 						{
-							System.out.println("Doesnt Work" + ix + " " + iy);
+					
 						isNotBlocked = false;
 						}
 						iy++;
@@ -136,14 +136,15 @@ public class Bishop extends Piece {
 			
 			else if(fxP < ixP && fyP < iyP)
 				{
-				ix = ixP;
-				iy = iyP;
+	
+				ix = ixP-1;
+				iy = iyP-1;
 
-				while(iy < iyP && ix < ixP)
+				while(iy > fyP && ix > fxP)
 					{
 					if(ChessMain.board[ix][iy] instanceof Empty)
 						{
-							
+						
 						}
 					else
 						{
