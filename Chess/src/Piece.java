@@ -21,7 +21,8 @@ public abstract class Piece
 				 {
 				 ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
 				 ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
-				 	 
+				 this.setxCoord(ix2);
+				 this.setyCoord(iy2);
 				 }
 			else
 				{
@@ -29,7 +30,7 @@ public abstract class Piece
 				ChessMain.takeMove();
 				}
 			 
-			 /*Check to see if puts in checkmate */
+			 
 			 
 		}
  
