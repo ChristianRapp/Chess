@@ -241,7 +241,7 @@ public class ChessMain
 					
 				if(!board[xCoord][yCoord].getAbr().equals(" ")){
 					
-				System.out.print("   " + board[xCoord][yCoord].getAbr() +"\u2009"+"\u2009"+"\u2009" +"\u2009" +"\u2009"+"  |");	
+				System.out.print("   " + board[xCoord][yCoord].getAbr() +"\u2009"+"\u2009"+"\u2009" +"\u2009" +"\u2009"+" |");	
 				}else
 					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}

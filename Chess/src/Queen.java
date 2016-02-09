@@ -30,14 +30,242 @@ public class Queen extends Piece {
 	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
 	{
 		
-		if(Rook.isValidMove(ixP, iyP, fxP, fyP) || Bishop.isValidMove(ixP, iyP, fxP, fyP))
-		{
-			return true;
-		}
-		
+		if(rookValidMove(ixP,iyP,fxP,fyP) || bishopValidMove(ixP,iyP,fxP,fyP))
+		return true;
 		
 		return false;
 		
+	}
+	
+	
+	public boolean rookValidMove(int ixP, int iyP, int fxP, int fyP)
+	{
+		Boolean isNotBlocked = false;
+		
+		if(ixP == fxP && iyP < fyP)
+			{
+			isNotBlocked = true;
+			for(int i=iyP +1; i<fyP; i++)
+			{
+			if(ChessMain.board[ixP][i] instanceof Empty)
+			{	
+			}
+			else{
+				isNotBlocked = false;}
+			}
+			
+			}
+			
+		
+		if(iyP == fyP && ixP < fxP)
+			{
+				isNotBlocked = true;
+			for(int i=ixP +1; i<fxP; i++)
+			{
+			if(ChessMain.board[i][iyP] instanceof Empty)
+			{
+				
+			}
+			else
+				isNotBlocked = false;
+			}
+			
+			}
+		
+		if(ixP == fxP && iyP > fyP)
+		{
+			isNotBlocked = true;
+		for(int i=iyP -1; i>fyP; i--)
+		{
+		if(ChessMain.board[ixP][i] instanceof Empty)
+		{
+			
+		}
+		else
+			isNotBlocked = false;
+		}
+		
+		}
+		
+		
+		
+		
+		if(iyP == fyP && ixP > fxP)
+		{
+			isNotBlocked = true;
+		for(int i=ixP -1; i>fxP; i--)
+		{
+		if(ChessMain.board[i][iyP] instanceof Empty)
+		{
+			
+		}
+		
+		
+		else{
+			isNotBlocked = false;}
+		}
+		
+		}
+		
+		if(ChessMain.board[fxP][fyP] instanceof Empty || !(ChessMain.board[fxP][fyP].color == this.color))
+			{
+				
+			}
+		else
+			{
+				isNotBlocked = false;
+			}
+		return isNotBlocked;
+		
+	}
+	
+	public boolean bishopValidMove(int ixP, int iyP,int fxP, int fyP)
+	{
+		boolean isNotBlocked = false;
+		
+		double ratioX;
+		
+		if(fxP > ixP)
+			ratioX= fxP - ixP;
+		
+		else if(ixP > fxP)
+			ratioX = ixP -fxP;
+		
+		else
+			ratioX = 0;
+		
+		
+		double ratioY;
+		
+		if(fyP > iyP)
+			ratioY= fyP - iyP;
+		
+		else if(iyP > fyP)
+			ratioY = iyP -fyP;
+		
+		else
+			ratioY = 0;
+		
+		if(ratioX % ratioY == 0)
+			{
+			isNotBlocked = true;
+			int ix;
+			int iy;
+			
+			
+			if(fxP > ixP && fyP > iyP)
+				{
+				ix = ixP+1;
+				iy = iyP+1;
+			
+				while(iy < fyP && ix < fxP)
+					{
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+						
+						}
+					else
+						{
+							
+						isNotBlocked = false;
+						}
+					iy++;
+					ix++;
+					}
+				
+				}
+			
+			
+			else if(fxP > ixP && fyP < iyP)
+				{
+				ix = ixP+1;
+				iy = iyP-1;
+				
+				while(iy > fyP && ix < fxP)
+					{
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+							
+						}
+					else
+						{
+						isNotBlocked = false;
+						}
+					iy--;
+					ix++;
+					}
+				
+				}
+			
+			
+			else if(fxP < ixP && fyP > iyP)
+				{
+				ix = ixP-1;
+				iy = iyP+1;
+				
+				/* DO STUFF HERE */
+				
+				while(iy < fyP && ix > fxP)
+					{
+					
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+						
+							
+						}
+					else
+						{
+					
+						isNotBlocked = false;
+						}
+						iy++;
+						ix--;
+					}
+				
+				}
+			
+			
+			else if(fxP < ixP && fyP < iyP)
+				{
+	
+				ix = ixP-1;
+				iy = iyP-1;
+
+				while(iy > fyP && ix > fxP)
+					{
+					if(ChessMain.board[ix][iy] instanceof Empty)
+						{
+						
+						}
+					else
+						{
+						isNotBlocked = false;
+						}
+					iy--;
+					ix--;
+					}
+				
+				}
+				
+				
+			if(ChessMain.board[fxP][fyP] instanceof Empty || !(ChessMain.board[fxP][fyP].color == this.color))
+				{
+					
+				}
+			
+			else
+				{
+				isNotBlocked = false;
+				}
+			
+				
+			}
+		
+		
+		
+		
+		
+		return isNotBlocked;
 	}
 	
 }
