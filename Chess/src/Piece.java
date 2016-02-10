@@ -43,6 +43,8 @@ public abstract class Piece
 			if(this.color.equals("White"))
 						{
 						arr = findWhiteKing();
+						System.out.println(arr[0]);
+						System.out.println(arr[1]);
 						kingPosX = arr[0];
 						kingPosY = arr[1];
 						}
@@ -87,7 +89,8 @@ public abstract class Piece
 		{
 			
 			int[] kingPos = new int[2];
-			
+			kingPos[0] =0;
+			kingPos[1] = 0;
 			for(int row=0; row<8;row++)
 				{
 					for(int col = 0; col<8; col++)
