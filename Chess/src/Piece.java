@@ -17,7 +17,7 @@ public abstract class Piece
 			
 			 
 			 
-			if(this.isValidMove(ix1, iy1, ix2, iy2) == true)
+			if(this.isValidMove(ix1, iy1, ix2, iy2) == true && this.isCheck() == false)
 				 {
 				 ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
 				 ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
@@ -34,6 +34,98 @@ public abstract class Piece
 			 
 		}
  
+		public boolean isCheck()
+		{
+			boolean isCheck = false;
+			int [] arr = new int[2];
+			int kingPosX = 0;
+			int kingPosY = 0;
+			if(this.color.equals("White"))
+						{
+						arr = findWhiteKing();
+						kingPosX = arr[0];
+						kingPosY = arr[1];
+						}
+			
+			else if(this.color.equals("Black"))
+				{
+				arr = findBlackKing();
+				kingPosX = arr[0];
+				kingPosY = arr[1];
+				}
+					
+			for(int row =0; row < 8; row++)
+				{
+					
+				for(int col =0; col <8; col++)
+					{
+					
+						if(!(ChessMain.board[row][col].color == this.color))
+							{
+							
+							if(ChessMain.board[row][col].isValidMove(row, col, kingPosX, kingPosY))
+								{
+									
+								}
+							else
+								{
+								isCheck = false;
+								}
+								
+							}
+						
+						
+					}
+			
+					
+					
+				}
+			return isCheck;
+		}
+		
+		public int[] findWhiteKing()
+		{
+			
+			int[] kingPos = new int[2];
+			
+			for(int row=0; row<8;row++)
+				{
+					for(int col = 0; col<8; col++)
+						{
+						if(ChessMain.board[row][col].getColor().equals("White") && ChessMain.board[row][col].name.equals("King"))
+							{
+							kingPos[0] = row;
+							kingPos[1] = col;
+							}
+						}
+				}
+			
+			
+			return kingPos;
+				
+		}
+		
+		
+		public int[] findBlackKing()
+			{
+				
+				int[] kingPos = new int[2];
+				
+				for(int row=0; row<8;row++)
+					{
+						for(int col = 0; col<8; col++)
+							{
+							if(ChessMain.board[row][col].getColor().equals("Black") && ChessMain.board[row][col].name.equals("King"))
+								{
+								kingPos[0] = row;
+								kingPos[1] = col;
+								}
+							}
+					}
+				
+				return kingPos;
+					
+			}
 		
 		
 		public String getName() {
