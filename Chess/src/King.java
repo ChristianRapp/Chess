@@ -33,6 +33,14 @@ public class King extends Piece{
 			{
 			if(ChessMain.board[fxP][fyP] instanceof Empty || !(this.color == ChessMain.board[fxP][fyP].getColor()) )
 				{
+				if(this.color.equals("White")){
+					ChessMain.kingsRow[0].setxCoord(fxP);
+					ChessMain.kingsRow[0].setyCoord(fyP);}
+				
+				if(this.color.equals("Black"))
+					{ChessMain.kingsRow[1].setxCoord(fxP);
+					ChessMain.kingsRow[1].setyCoord(fyP);}
+				
 				return true;	
 				}
 			}

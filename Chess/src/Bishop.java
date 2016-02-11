@@ -46,7 +46,7 @@ public class Bishop extends Piece {
 		
 		double ratioY;
 		
-		if(fyP > iyP)
+		if(fyP >= iyP)
 			ratioY= fyP - iyP;
 		
 		else if(iyP > fyP)
@@ -55,7 +55,7 @@ public class Bishop extends Piece {
 		else
 			ratioY = 0;
 		
-		if(ratioX % ratioY == 0)
+		if(ratioX / ratioY == 0)
 			{
 			isNotBlocked = true;
 			int ix;

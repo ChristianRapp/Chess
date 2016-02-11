@@ -146,7 +146,7 @@ public class Queen extends Piece {
 		else
 			ratioY = 0;
 		
-		if(ratioX % ratioY == 0)
+		if(ratioX / ratioY == 0)
 			{
 			isNotBlocked = true;
 			int ix;

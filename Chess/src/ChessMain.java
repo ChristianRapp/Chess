@@ -3,6 +3,7 @@ import java.util.*;
 public class ChessMain
 	{
 	static Piece[][] board = new Piece[8][8];
+	static King[] kingsRow = new King[2];
 	static boolean playing = true;
 	static String currentColor = "White";
 		public static void main(String[] args)
@@ -301,6 +302,7 @@ public class ChessMain
 		board[0][2] = new BlackBishop(0,2);
 		board[0][3] = new BlackQueen(0,3);
 		board[0][4] = new BlackKing(0,4);
+		kingsRow[1] = new BlackKing(0,4);
 		board[0][5] = new BlackBishop(0,5);
 		board[0][6] = new BlackKnight(0,6);
 		board[0][7] = new BlackRook(0,7);
@@ -324,6 +326,7 @@ public class ChessMain
 			board[7][2] = new WhiteBishop(7,2);
 			board[7][3] = new WhiteQueen(7,3);
 			board[7][4] = new WhiteKing(7,4);
+			kingsRow[0] = new WhiteKing(7,4);
 			board[7][5] = new WhiteBishop(7,5);
 			board[7][6] = new WhiteKnight(7,6);
 			board[7][7] = new WhiteRook(7,7);

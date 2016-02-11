@@ -37,23 +37,18 @@ public abstract class Piece
 		public boolean isCheck()
 		{
 			boolean isCheck = false;
-			int [] arr = new int[2];
 			int kingPosX = 0;
 			int kingPosY = 0;
 			if(this.color.equals("White"))
-						{
-						arr = findWhiteKing();
-						System.out.println(arr[0]);
-						System.out.println(arr[1]);
-						kingPosX = arr[0];
-						kingPosY = arr[1];
-						}
+				{
+				kingPosX = findWhiteKing().xCoord;
+				kingPosY = findWhiteKing().yCoord;
+				}
 			
 			else if(this.color.equals("Black"))
 				{
-				arr = findBlackKing();
-				kingPosX = arr[0];
-				kingPosY = arr[1];
+				kingPosX = findBlackKing().xCoord;
+				kingPosY = findBlackKing().yCoord;
 				}
 					
 			for(int row =0; row < 8; row++)
@@ -62,16 +57,16 @@ public abstract class Piece
 				for(int col =0; col <8; col++)
 					{
 					
-						if(!(ChessMain.board[row][col].color == this.color))
+						if(!(ChessMain.board[row][col].color == this.color) && !(ChessMain.board[row][col] instanceof Empty))
 							{
 							
 							if(ChessMain.board[row][col].isValidMove(row, col, kingPosX, kingPosY))
 								{
-									
+								isCheck = true;	
 								}
 							else
 								{
-								isCheck = false;
+								
 								}
 								
 							}
@@ -84,49 +79,40 @@ public abstract class Piece
 				}
 			return isCheck;
 		}
+
 		
-		public int[] findWhiteKing()
+		public boolean isCheckMate()
 		{
 			
-			int[] kingPos = new int[2];
-			kingPos[0] =0;
-			kingPos[1] = 0;
-			for(int row=0; row<8;row++)
+			for(int row=0; row<8; row++)
 				{
-					for(int col = 0; col<8; col++)
-						{
-						if(ChessMain.board[row][col].getColor().equals("White") && ChessMain.board[row][col].name.equals("King"))
-							{
-							kingPos[0] = row;
-							kingPos[1] = col;
-							}
-						}
+				for(int col =0; col<8; col++)
+					{
+						
+					}
+					
+					
 				}
 			
 			
-			return kingPos;
+			return false;
+			
+		}
+		
+		
+		
+		public King findWhiteKing()
+		{
+			
+			return ChessMain.kingsRow[0];
 				
 		}
 		
 		
-		public int[] findBlackKing()
+		public King findBlackKing()
 			{
 				
-				int[] kingPos = new int[2];
-				
-				for(int row=0; row<8;row++)
-					{
-						for(int col = 0; col<8; col++)
-							{
-							if(ChessMain.board[row][col].getColor().equals("Black") && ChessMain.board[row][col].name.equals("King"))
-								{
-								kingPos[0] = row;
-								kingPos[1] = col;
-								}
-							}
-					}
-				
-				return kingPos;
+			return ChessMain.kingsRow[1];
 					
 			}
 		
