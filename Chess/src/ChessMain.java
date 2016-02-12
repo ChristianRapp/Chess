@@ -17,9 +17,25 @@ public class ChessMain
 				Take the move again without printing the board*/
 				//addBlackPieces();
 				//addWhitePieces();
-				addWhiteUniCode();
-				addBlackUniCode();
-				addEmptySpaces();
+//				addWhiteUniCode();
+//				addBlackUniCode();
+//				addEmptySpaces();
+				
+				addAllEmptySpace();
+				
+				
+				for(int row =0; row<8;row++)
+					{
+					for(int col =0; col<8; col++)
+						{
+						if(board[7][5].isValidMove(7, 5, row, col))
+							{
+								System.out.println(row + " " + col);
+							}
+						}
+					}
+				
+				
 				
 				
 				while(playing)
@@ -34,6 +50,25 @@ public class ChessMain
 				
 
 			}
+		
+		public static void addAllEmptySpace()
+		{
+			
+			for(int row =0; row<8;row++)
+				{
+				for(int col =0; col<8; col++)
+					{
+					board[row][col] = new Empty(row,col);
+					}
+				}
+			
+			board[7][5] = new WhiteBishop(7,5);
+			
+		}
+		
+		
+		
+		
 		public static void takeMove()
 			{
 			 Scanner userMove = new Scanner(System.in);
