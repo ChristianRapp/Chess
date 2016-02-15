@@ -16,14 +16,43 @@ public abstract class Piece
 		{
 			
 			 
-			 
-			if(this.isValidMove(ix1, iy1, ix2, iy2) == true && this.isCheck() == false)
+			if(this.isValidMove(ix1, iy1, ix2, iy2) == true && isCheck() == false)
 				 {
 				 ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
 				 ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
 				 this.setxCoord(ix2);
 				 this.setyCoord(iy2);
 				 }
+			
+
+			else if(this.isCheck())
+			{
+				System.out.println(this.color + " is now in check!");
+				
+				if(this.isCheckMate())
+				{
+					switch(this.color)
+					{
+					
+					case "White":
+						{
+						System.out.println("White has been checkmated");
+						}
+						
+					case "Black":
+						{
+						System.out.println("Black has been checkmated");
+						}
+					System.out.println("The game is now over");
+					System.exit(0);
+					
+					}
+				System.out.println();
+				}
+				
+			}
+			
+			
 			else
 				{
 				System.out.println("Please enter a valid move");
@@ -83,19 +112,33 @@ public abstract class Piece
 		
 		public boolean isCheckMate()
 		{
-			
+			boolean isCheckMate = true;
 			for(int row=0; row<8; row++)
 				{
 				for(int col =0; col<8; col++)
 					{
 						
+					if(this.color.equals(ChessMain.board[row][col].color))
+						{
+						for(int row2 = 0; row2<8;row2++)
+							{
+							for(int col2 =0; col2<8; col2++)
+								{
+								if(ChessMain.board[row][col].isValidMove(row, col, row2, col2))
+									{
+									isCheckMate = false;
+									}
+								}
+							}
+						}	
+					
 					}
 					
 					
 				}
 			
 			
-			return false;
+			return isCheckMate;
 			
 		}
 		

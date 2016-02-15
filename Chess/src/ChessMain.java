@@ -15,25 +15,13 @@ public class ChessMain
 				*Followed by the position you would like to move it too.
 				*If piece cannot be moved there possibly give a reason why?
 				Take the move again without printing the board*/
-				//addBlackPieces();
-				//addWhitePieces();
-//				addWhiteUniCode();
-//				addBlackUniCode();
-//				addEmptySpaces();
-				
-				addAllEmptySpace();
+//				addBlackPieces();
+//				addWhitePieces();
+				addWhiteUniCode();
+				addBlackUniCode();
+				addEmptySpaces();
 				
 				
-				for(int row =0; row<8;row++)
-					{
-					for(int col =0; col<8; col++)
-						{
-						if(board[7][5].isValidMove(7, 5, row, col))
-							{
-								System.out.println(row + " " + col);
-							}
-						}
-					}
 				
 				
 				
@@ -51,9 +39,8 @@ public class ChessMain
 
 			}
 		
-		public static void addAllEmptySpace()
+		public static void bugDiagonalQueenBishop()
 		{
-			
 			for(int row =0; row<8;row++)
 				{
 				for(int col =0; col<8; col++)
@@ -61,12 +48,22 @@ public class ChessMain
 					board[row][col] = new Empty(row,col);
 					}
 				}
+		
+				board[7][5] = new WhiteQueen(7,5);
 			
-			board[7][5] = new WhiteBishop(7,5);
+			
+			for(int row =0; row<8;row++)
+				{
+				for(int col =0; col<8; col++)
+					{
+					if(board[7][5].isValidMove(7, 5, row, col))
+						{
+							System.out.println(row + " " + col);
+						}
+					}
+				}
 			
 		}
-		
-		
 		
 		
 		public static void takeMove()
@@ -277,7 +274,7 @@ public class ChessMain
 					
 				if(!board[xCoord][yCoord].getAbr().equals(" ")){
 					
-				System.out.print("   " + board[xCoord][yCoord].getAbr() +"\u2009"+"\u2009"+"\u2009" +"\u2009" +"\u2009"+" |");	
+				System.out.print("   " + board[xCoord][yCoord].getAbr() +"\u2009"+"\u2009"+"\u2009" +"\u2009" +"\u2009"+"  |");	
 				}else
 					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}

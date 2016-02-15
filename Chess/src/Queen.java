@@ -132,7 +132,7 @@ public class Queen extends Piece {
 			ratioX = ixP -fxP;
 		
 		else
-			ratioX = 0;
+			ratioX = -1;
 		
 		
 		double ratioY;
@@ -144,9 +144,9 @@ public class Queen extends Piece {
 			ratioY = iyP -fyP;
 		
 		else
-			ratioY = 0;
+			ratioY = -2;
 		
-		if(ratioX / ratioY == 0)
+		if(ratioX / ratioY == 1)
 			{
 			isNotBlocked = true;
 			int ix;

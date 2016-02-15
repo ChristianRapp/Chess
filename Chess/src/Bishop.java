@@ -41,7 +41,7 @@ public class Bishop extends Piece {
 			ratioX = ixP -fxP;
 		
 		else
-			ratioX = 0;
+			ratioX = -1;
 		
 		
 		double ratioY;
@@ -53,9 +53,9 @@ public class Bishop extends Piece {
 			ratioY = iyP -fyP;
 		
 		else
-			ratioY = 0;
+			ratioY = -2;
 		
-		if(ratioX / ratioY == 0)
+		if(ratioX / ratioY == 1)
 			{
 			isNotBlocked = true;
 			int ix;
@@ -71,7 +71,7 @@ public class Bishop extends Piece {
 					{
 					if(ChessMain.board[ix][iy] instanceof Empty)
 						{
-						
+						System.out.println();
 						}
 					else
 						{
