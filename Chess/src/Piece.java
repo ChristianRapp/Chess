@@ -67,7 +67,7 @@ public abstract class Piece
 				
 				
 				
-				else{	
+				else{
 					ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
 					ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
 					this.setxCoord(ix2);
@@ -76,17 +76,28 @@ public abstract class Piece
 				 
 					if(this.color.equals("Black"))
 				 		{
-						if(findBlackKing().isCheck())
+						if(findWhiteKing().isCheckMate())
 							{
-							System.out.println("Black is now in check!"); 
+							System.out.println("White is now in checkmate!"); 
+							}
+						
+						else if(findWhiteKing().isCheck())
+							{
+							System.out.println("White is now in check!"); 
 							}
 				 		}
 				 
 					if(this.color.equals("White"))
 						{
-						if(findWhiteKing().isCheck())
+						
+						if(findBlackKing().isCheckMate())
+						{
+						System.out.println("Black is now in checkmate!"); 
+						}
+						
+						else if(findBlackKing().isCheck())
 							{
-							System.out.println("White is now in check!"); 
+							System.out.println("Black is now in check!"); 
 							}
 						}
 				 
@@ -156,7 +167,9 @@ public abstract class Piece
 		
 		public boolean isCheckMate()
 		{
+			System.out.println("Test 4");
 			boolean isCheckMate = true;
+			Piece[][] psuedoboard2;
 			for(int row=0; row<8; row++)
 				{
 				for(int col =0; col<8; col++)
@@ -168,13 +181,13 @@ public abstract class Piece
 							{
 							for(int col2 =0; col2<8; col2++)
 								{
-								Piece[][] psuedoboard = ChessMain.board;
+								psuedoboard2 = ChessMain.board;
 								
-								if(ChessMain.board[row][col].isValidMove(row, col, row2, col2))
+								if(psuedoboard2[row][col].isValidMove(row, col, row2, col2))
 									{
-									psuedoboard[row2][col2] = psuedoboard[row][col];
-									psuedoboard[row][col] = new Empty(row, col);
-									if(psuedoboard[row2][col2].isCheck())
+									psuedoboard2[row2][col2] = psuedoboard2[row][col];
+									psuedoboard2[row][col] = new Empty(row, col);
+									if(psuedoboard2[row2][col2].isCheck())
 									{
 										
 									}
