@@ -16,41 +16,84 @@ public abstract class Piece
 		{
 			
 			 
-			if(this.isValidMove(ix1, iy1, ix2, iy2) == true && isCheck() == false)
+			if(this.isValidMove(ix1, iy1, ix2, iy2) == true)
 				 {
-				 ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
-				 ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
-				 this.setxCoord(ix2);
-				 this.setyCoord(iy2);
-				 }
-			
-
-			else if(this.isCheck())
-			{
-				System.out.println(this.color + " is now in check!");
 				
-				if(this.isCheckMate())
+				
+				
+				if(this.isCheck())
 				{
-					switch(this.color)
+					System.out.println("Test 1");
+					Piece[][] psuedoboard = ChessMain.board;
+					if(this.isCheckMate())
 					{
-					
-					case "White":
+						System.out.println("Test 2");
+						switch(this.color)
 						{
-						System.out.println("White has been checkmated");
-						}
 						
-					case "Black":
-						{
-						System.out.println("Black has been checkmated");
+						case "White":
+							{
+							System.out.println("White has been checkmated");
+							}
+							
+						case "Black":
+							{
+							System.out.println("Black has been checkmated");
+							}
+						System.out.println("The game is now over");
+						System.exit(0);
+						
 						}
-					System.out.println("The game is now over");
-					System.exit(0);
 					
 					}
-				System.out.println();
+					
+					else if(this.isCheck() == true)
+					{
+					System.out.println("Test 3");	
+					psuedoboard[ix2][iy2] = psuedoboard[ix1][iy1];
+					psuedoboard[ix1][iy1] = new Empty(ix1, iy1);
+					if(this.isCheck())
+					{
+					System.out.println(this.color + " is still in check!");
+					ChessMain.takeMove();
+					}
+						
+						
+					}
+					
+				
 				}
 				
-			}
+				
+				
+				
+				else{	
+					ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
+					ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
+					this.setxCoord(ix2);
+					this.setyCoord(iy2);
+					this.setFirstMove(false);
+				 
+					if(this.color.equals("Black"))
+				 		{
+						if(findBlackKing().isCheck())
+							{
+							System.out.println("Black is now in check!"); 
+							}
+				 		}
+				 
+					if(this.color.equals("White"))
+						{
+						if(findWhiteKing().isCheck())
+							{
+							System.out.println("White is now in check!"); 
+							}
+						}
+				 
+				 	}
+				 }
+
+			
 			
 			
 			else
@@ -62,6 +105,7 @@ public abstract class Piece
 			 
 			 
 		}
+		
  
 		public boolean isCheck()
 		{
@@ -124,9 +168,18 @@ public abstract class Piece
 							{
 							for(int col2 =0; col2<8; col2++)
 								{
+								Piece[][] psuedoboard = ChessMain.board;
+								
 								if(ChessMain.board[row][col].isValidMove(row, col, row2, col2))
 									{
-									isCheckMate = false;
+									psuedoboard[row2][col2] = psuedoboard[row][col];
+									psuedoboard[row][col] = new Empty(row, col);
+									if(psuedoboard[row2][col2].isCheck())
+									{
+										
+									}
+									else{
+									isCheckMate = false;}
 									}
 								}
 							}
