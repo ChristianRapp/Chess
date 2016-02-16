@@ -26,40 +26,40 @@ public abstract class Piece
 					System.out.println("Test 1");
 					Piece[][] psuedoboard = ChessMain.board;
 					if(this.isCheckMate())
-					{
+						{
 						System.out.println("Test 2");
 						switch(this.color)
-						{
-						
-						case "White":
 							{
-							System.out.println("White has been checkmated");
-							}
 							
-						case "Black":
-							{
-							System.out.println("Black has been checkmated");
+							case "White":
+								{
+								System.out.println("White has been checkmated");
+								}
+								
+							case "Black":
+								{
+								System.out.println("Black has been checkmated");
+								}
+							System.out.println("The game is now over");
+							System.exit(0);
+							
 							}
-						System.out.println("The game is now over");
-						System.exit(0);
-						
+					
 						}
 					
-					}
-					
-					else if(this.isCheck() == true)
-					{
-					System.out.println("Test 3");	
-					psuedoboard[ix2][iy2] = psuedoboard[ix1][iy1];
-					psuedoboard[ix1][iy1] = new Empty(ix1, iy1);
-					if(this.isCheck())
-					{
-					System.out.println(this.color + " is still in check!");
-					ChessMain.takeMove();
-					}
-						
-						
-					}
+					else
+						{
+						System.out.println("Test 3");	
+						psuedoboard[ix2][iy2] = psuedoboard[ix1][iy1];
+						psuedoboard[ix1][iy1] = new Empty(ix1, iy1);
+						if(this.isCheck())
+							{
+							System.out.println(this.color + " is still in check!");
+							ChessMain.takeMove();
+							}
+							
+							
+						}
 					
 				
 				}
@@ -168,7 +168,6 @@ public abstract class Piece
 		public boolean isCheckMate()
 		{
 			System.out.println("Test 4");
-			boolean isCheckMate = true;
 			Piece[][] psuedoboard2;
 			for(int row=0; row<8; row++)
 				{
@@ -183,6 +182,7 @@ public abstract class Piece
 								{
 								psuedoboard2 = ChessMain.board;
 								
+								
 								if(psuedoboard2[row][col].isValidMove(row, col, row2, col2))
 									{
 									psuedoboard2[row2][col2] = psuedoboard2[row][col];
@@ -192,11 +192,15 @@ public abstract class Piece
 										
 									}
 									else{
-									isCheckMate = false;}
+									return false;}
 									}
 								}
 							}
-						}	
+						}
+					else
+						{
+						
+						}
 					
 					}
 					
@@ -204,7 +208,7 @@ public abstract class Piece
 				}
 			
 			
-			return isCheckMate;
+			return true;
 			
 		}
 		
