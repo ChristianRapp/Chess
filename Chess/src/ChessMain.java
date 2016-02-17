@@ -69,11 +69,25 @@ public class ChessMain
 		
 		public static void takeMove()
 			{
+				String[]move = new String[2];
 			 Scanner userMove = new Scanner(System.in);
-			 String[] move = userMove.nextLine().split(" ");
+			 String userM = userMove.nextLine();
+			 if(userM.length() == 5){
+			 move = userM.split(" ");}
+			 else
+				 {
+					 System.err.println("please enter a valid input");
+					 takeMove();
+				 }
 			 
 			 String iP = move[0];
 			 String fP = move[1];
+			 
+			 if(!(iP.length() == 2) || !(fP.length() == 2))
+				 {
+					 System.err.println("please enter a valid input");
+					 takeMove(); 
+				 }
 			 
 			 String t1 = iP.substring(1,2);
 			 
@@ -106,6 +120,9 @@ public class ChessMain
 			 	case 8:
 			 		ix1 = 0;
 			 		break;
+			 	default:
+			 		System.err.println("Please enter a valid move");
+			 		takeMove();
 			 	}
 	
 			 switch(iP.substring(0,1))
@@ -142,6 +159,9 @@ public class ChessMain
 			 case "h":
 				 iy1 = 7;
 				 break;
+			default:
+		 		System.err.println("Please enter a valid move");
+				takeMove();
 			 }
 
 			 
@@ -175,6 +195,9 @@ public class ChessMain
 			 case 8:
 				 ix2 = 0;
 				 break;
+			default: 
+		 		System.err.println("Please enter a valid move");
+				takeMove();
 			 }
 			 
 			 switch(fP.substring(0,1))
@@ -211,6 +234,9 @@ public class ChessMain
 			 case "h":
 				 iy2 = 7;
 				 break;
+			default:
+		 		System.err.println("Please enter a valid move");
+				takeMove();
 			 }
 		if(board[ix1][iy1].getColor().equals(currentColor))
 			{	
@@ -220,7 +246,7 @@ public class ChessMain
 			}
 		else
 			{
-			System.out.println("It is not your turn to move");
+			System.err.println("It is not your turn to move");
 			takeMove();
 			}
 			
@@ -265,6 +291,7 @@ public class ChessMain
 				case 7:
 					System.out.print("1");
 					break;
+					
 						
 					
 				}
@@ -275,7 +302,7 @@ public class ChessMain
 					
 				if(!board[xCoord][yCoord].getAbr().equals(" ")){
 					
-				System.out.print("   " + board[xCoord][yCoord].getAbr() +"\u2009"+"\u2009"+"\u2009" +"\u2009" +"\u2009"+"  |");	
+				System.out.print("   " + board[xCoord][yCoord].getAbr() +"\u2009"+"\u2009"+"\u2009" +"\u2009" +"\u2009"+" |");	
 				}else
 					System.out.print("   " + board[xCoord][yCoord].getAbr() + "   |");
 				}

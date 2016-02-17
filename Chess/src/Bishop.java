@@ -27,7 +27,7 @@ public class Bishop extends Piece {
 		abr = a;
 	}
 	
-	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP,Piece[][] larry)
 	{
 		
 		boolean isNotBlocked = false;

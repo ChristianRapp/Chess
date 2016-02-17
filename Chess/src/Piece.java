@@ -11,7 +11,7 @@ public abstract class Piece
 		static Piece[][] psuedoboard = new Piece[8][8];
 		static Piece[][] checkPsuedoboard = new Piece[8][8];
 		
-		public abstract boolean isValidMove(int ixP, int iyP, int fxP, int fyP);
+		public abstract boolean isValidMove(int ixP, int iyP, int fxP, int fyP, Piece[][] larry);
 		
 		public void makeMove(int ix1, int iy1, int ix2, int iy2)
 		{
@@ -23,32 +23,37 @@ public abstract class Piece
 				if(isCheck() == true)
 				{
 					
-					if(isCheckMate())
-						{
-						switch(color)
-							{
-							
-							case "White":
-								{
-								System.out.println("White has been checkmated");
-								}
-								
-							case "Black":
-								{
-								System.out.println("Black has been checkmated");
-								}
-							System.out.println("The game is now over");
-							System.exit(0);
-							
-							}
-					
-						}
-					
-					else
-						{
+//					if(isCheckMate())
+//						{
+//						switch(color)
+//							{
+//							
+//							case "White":
+//								{
+//								System.out.println("White has been checkmated");
+//								}
+//								
+//							case "Black":
+//								{
+//								System.out.println("Black has been checkmated");
+//								}
+//							System.out.println("The game is now over");
+//							System.exit(0);
+//							
+//							}
+//					
+//						}
+//					
+//					else
+						//{
 							clearBoard();
 							psuedoboard[ix2][iy2] = psuedoboard[ix1][iy1];	
 							psuedoboard[ix1][iy1] = new Empty(ix1, iy1);
+							
+							System.out.println(psuedoboard[ix2][iy2]);
+						
+							
+							
 							if(psuedoboard[ix2][iy2].isCheck()){
 							System.out.println(color + " is still in check!");
 							ChessMain.takeMove();}
@@ -58,7 +63,7 @@ public abstract class Piece
 							ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);	
 							}
 							
-						}
+						//}
 					
 				
 				}
@@ -72,6 +77,7 @@ public abstract class Piece
 					setxCoord(ix2);
 					setyCoord(iy2);
 					setFirstMove(false);
+					clearBoard();
 				 
 					if(color.equals("Black"))
 				 		{
@@ -83,12 +89,12 @@ public abstract class Piece
 						System.out.println("White is now in check!"); 
 						}
 						
-						else if(ChessMain.board[xCoord][yCoord].isCheckMate())
-							{
-							ChessMain.printBoard();
-							System.out.println("White is now in checkmate!");
-							System.exit(0);
-							}
+//						else if(ChessMain.board[xCoord][yCoord].isCheckMate())
+//							{
+//							ChessMain.printBoard();
+//							System.out.println("White is now in checkmate!");
+//							System.exit(0);
+//							}
 						
 						
 				 		}
@@ -97,12 +103,12 @@ public abstract class Piece
 						{
 						int xCoord = findBlackKing().xCoord;
 						int yCoord = findBlackKing().yCoord;
-						if(ChessMain.board[xCoord][yCoord].isCheckMate())
-							{
-							ChessMain.printBoard();
-							System.out.println("Black is now in checkmate!"); 
-							System.exit(0);
-							}
+//						if(ChessMain.board[xCoord][yCoord].isCheckMate())
+//							{
+//							ChessMain.printBoard();
+//							System.out.println("Black is now in checkmate!"); 
+//							System.exit(0);
+//							}
 						
 						if(ChessMain.board[xCoord][yCoord].isCheck())
 							{
@@ -118,7 +124,7 @@ public abstract class Piece
 			
 			else
 				{
-				System.out.println("Please enter a valid move");
+				System.err.println("Please enter a valid move");
 				ChessMain.takeMove();
 				}
 			 
@@ -137,7 +143,6 @@ public abstract class Piece
  
 		public boolean isCheck()
 		{
-			clearBoard();
 			int kingPosX = 0;
 			int kingPosY = 0;
 			
@@ -151,16 +156,13 @@ public abstract class Piece
 						{
 							int x = findWhite(psuedoboard).xCoord;
 							int y = findWhite(psuedoboard).yCoord;
+							System.out.println(x +" "+ y + " in the isCheck method");
 							if(psuedoboard[row][col].isValidMove(row, col, x, y) && psuedoboard[x][y] instanceof WhiteKing)
 								{
-								System.out.println(psuedoboard[x][y]);
-								System.out.println("x " + x);
-								System.out.println("y " + y);
-								System.out.println("Check");
-								System.out.println(psuedoboard[row][col].name + " " + row+" " + col+ " to "+x + " "+y );
-
 								return true;	
-								}			
+								}
+						
+	
 						}	
 					}
 				
@@ -177,8 +179,6 @@ public abstract class Piece
 							int y = findBlack(psuedoboard).yCoord;
 							if(psuedoboard[row][col].isValidMove(row, col, x, y)&& psuedoboard[x][y] instanceof BlackKing)
 								{
-								System.out.println("Check");
-								System.out.println(psuedoboard[row][col].name + " " + row+" " + col+ " to "+x+ " "+y);
 								return true;	
 								}			
 						}	

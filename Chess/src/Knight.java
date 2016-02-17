@@ -27,7 +27,7 @@ public class Knight extends Piece {
 		
 	}
 	
-	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP,Piece[][] larry)
 	{
 		
 		if((ixP + 2 == fxP && iyP + 1 == fyP) && (ChessMain.board[fxP][fyP] instanceof Empty || !this.color.equals(ChessMain.board[fxP][fyP].getColor())))

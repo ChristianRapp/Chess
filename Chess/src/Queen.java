@@ -27,10 +27,10 @@ public class Queen extends Piece {
 		
 	}
 	
-	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP,Piece[][] larry)
 	{
 		
-		if(rookValidMove(ixP,iyP,fxP,fyP) || bishopValidMove(ixP,iyP,fxP,fyP))
+		if(rookValidMove(ixP,iyP,fxP,fyP,larry) || bishopValidMove(ixP,iyP,fxP,fyP,larry))
 		return true;
 		
 		return false;
@@ -38,7 +38,7 @@ public class Queen extends Piece {
 	}
 	
 	
-	public boolean rookValidMove(int ixP, int iyP, int fxP, int fyP)
+	public boolean rookValidMove(int ixP, int iyP, int fxP, int fyP,Piece[][] larry)
 	{
 		Boolean isNotBlocked = false;
 		
@@ -119,7 +119,7 @@ public class Queen extends Piece {
 		
 	}
 	
-	public boolean bishopValidMove(int ixP, int iyP,int fxP, int fyP)
+	public boolean bishopValidMove(int ixP, int iyP,int fxP, int fyP,Piece[][] larry)
 	{
 		boolean isNotBlocked = false;
 		

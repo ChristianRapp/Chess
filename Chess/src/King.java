@@ -26,7 +26,7 @@ public class King extends Piece{
 		
 	}
 	
-	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP,Piece[][] larry)
 	{
 		
 		if(  ((ixP +1 == fxP)&& (iyP + 1 == fyP || iyP - 1 == fyP || iyP == fyP))  || ((ixP - 1 == fxP) &&(iyP + 1 == fyP || iyP - 1 == fyP || iyP == fyP)) || ((ixP == fxP)&& (iyP + 1 == fyP || iyP - 1 == fyP)) )

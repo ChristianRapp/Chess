@@ -28,7 +28,7 @@ public class Rook extends Piece{
 	
 	
 	
-	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP)
+	public boolean isValidMove(int ixP, int iyP, int fxP, int fyP,Piece[][] larry)
 		{
 		
 		Boolean isNotBlocked = false;
