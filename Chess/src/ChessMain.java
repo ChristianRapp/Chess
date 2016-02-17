@@ -27,8 +27,6 @@ public class ChessMain
 				
 				
 				
-				
-				
 				while(playing)
 					{
 					currentColor = "White";

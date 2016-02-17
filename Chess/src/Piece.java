@@ -9,6 +9,7 @@ public abstract class Piece
 		protected boolean isFirstMove;
 		protected String color;
 		static Piece[][] psuedoboard = new Piece[8][8];
+		static Piece[][] checkPsuedoboard = new Piece[8][8];
 		
 		public abstract boolean isValidMove(int ixP, int iyP, int fxP, int fyP);
 		
@@ -139,34 +140,89 @@ public abstract class Piece
 			clearBoard();
 			int kingPosX = 0;
 			int kingPosY = 0;
+			
 			if(color.equals("White"))
 				{
-				kingPosX = findWhiteKing().xCoord;
-				kingPosY = findWhiteKing().yCoord;
+				
+				for(int row =0; row < 8; row++)
+					{
+						
+					for(int col =0; col <8; col++)
+						{
+							int x = findWhite(psuedoboard).xCoord;
+							int y = findWhite(psuedoboard).yCoord;
+							if(psuedoboard[row][col].isValidMove(row, col, x, y) && psuedoboard[x][y] instanceof WhiteKing)
+								{
+								System.out.println(psuedoboard[x][y]);
+								System.out.println("x " + x);
+								System.out.println("y " + y);
+								System.out.println("Check");
+								System.out.println(psuedoboard[row][col].name + " " + row+" " + col+ " to "+x + " "+y );
+
+								return true;	
+								}			
+						}	
+					}
+				
 				}
 			
 			else if(color.equals("Black"))
 				{
-				kingPosX = findBlackKing().xCoord;
-				kingPosY = findBlackKing().yCoord;
-				}
-					
-			for(int row =0; row < 8; row++)
-				{
-					
-				for(int col =0; col <8; col++)
+				for(int row =0; row < 8; row++)
 					{
-					clearBoard();
-						if(ChessMain.board[row][col].isValidMove(row, col, kingPosX, kingPosY))
-							{
-							return true;	
-							}			
-					}	
+						
+					for(int col =0; col <8; col++)
+						{
+							int x = findBlack(psuedoboard).xCoord;
+							int y = findBlack(psuedoboard).yCoord;
+							if(psuedoboard[row][col].isValidMove(row, col, x, y)&& psuedoboard[x][y] instanceof BlackKing)
+								{
+								System.out.println("Check");
+								System.out.println(psuedoboard[row][col].name + " " + row+" " + col+ " to "+x+ " "+y);
+								return true;	
+								}			
+						}	
+					}
 				}
+					
+			
 			return false;
 		}
 
+		public King findWhite(Piece[][] larry)
+		{
+			for(int row =0; row<8; row++)
+				{
+				for(int col=0; col<8; col++)
+					{
+					if(larry[row][col] instanceof WhiteKing)
+						{
+						return (King) larry[row][col];
+						}
+					}
+				
+				}
+			return null;
+		}
 		
+		
+		public King findBlack(Piece[][] larry)
+		{
+			for(int row =0; row<8; row++)
+			{
+			for(int col=0; col<8; col++)
+			{
+			if(larry[row][col] instanceof BlackKing)
+			{
+			return (King) larry[row][col];
+			}
+			}
+				
+			}
+			return null;
+		}
+		
+
 		public boolean isCheckMate()
 		{
 			for(int row=0; row<8; row++)
@@ -180,19 +236,20 @@ public abstract class Piece
 							{
 							for(int col2 =0; col2<8; col2++)
 								{
-								clearBoard();
-								switch(color)
-								{
 								
-								}
+								clearBoard();
 								
 								if(psuedoboard[row][col].isValidMove(row, col, row2, col2))
 									{
+									clearBoard();
+									
 									psuedoboard[row2][col2] = psuedoboard[row][col];
 									psuedoboard[row][col] = new Empty(row, col);
+									
 									if(psuedoboard[row2][col2].isCheck())
 									{
-										
+									System.out.println(psuedoboard[row][col].name +" " + row + " "+col+" to " + row2 + " " + col2);
+									System.out.println();
 									}
 									else{
 									return false;}
