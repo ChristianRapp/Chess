@@ -7,7 +7,7 @@ public class Empty extends Piece
 		isFirstMove = true;
 		xCoord =xC;
 		yCoord = yC;
-		color = null;
+		color = " ";
 		name = "Empty";
 		abr = " ";
 	}

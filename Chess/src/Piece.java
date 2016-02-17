@@ -16,14 +16,15 @@ public abstract class Piece
 		{
 			
 			 
-			if(this.isValidMove(ix1, iy1, ix2, iy2) == true)
+			if(isValidMove(ix1, iy1, ix2, iy2) == true)
 				 {
-				if(this.isCheck())
+				clearBoard();
+				if(isCheck() == true)
 				{
 					
-					if(this.isCheckMate())
+					if(isCheckMate())
 						{
-						switch(this.color)
+						switch(color)
 							{
 							
 							case "White":
@@ -44,9 +45,17 @@ public abstract class Piece
 					
 					else
 						{
-						
-							System.out.println(this.color + " is still in check!");
-							ChessMain.takeMove();
+							clearBoard();
+							psuedoboard[ix2][iy2] = psuedoboard[ix1][iy1];	
+							psuedoboard[ix1][iy1] = new Empty(ix1, iy1);
+							if(psuedoboard[ix2][iy2].isCheck()){
+							System.out.println(color + " is still in check!");
+							ChessMain.takeMove();}
+							else
+							{
+							ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
+							ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);	
+							}
 							
 						}
 					
@@ -59,35 +68,42 @@ public abstract class Piece
 				else{
 					ChessMain.board[ix2][iy2] = ChessMain.board[ix1][iy1];	
 					ChessMain.board[ix1][iy1] = new Empty(ix1, iy1);
-					this.setxCoord(ix2);
-					this.setyCoord(iy2);
-					this.setFirstMove(false);
+					setxCoord(ix2);
+					setyCoord(iy2);
+					setFirstMove(false);
 				 
-					if(this.color.equals("Black"))
+					if(color.equals("Black"))
 				 		{
-						if(findWhiteKing().isCheckMate())
+						int xCoord = findWhiteKing().xCoord;
+						int yCoord = findWhiteKing().yCoord;
+						
+						if(ChessMain.board[xCoord][yCoord].isCheck())
+						{
+						System.out.println("White is now in check!"); 
+						}
+						
+						else if(ChessMain.board[xCoord][yCoord].isCheckMate())
 							{
 							ChessMain.printBoard();
 							System.out.println("White is now in checkmate!");
 							System.exit(0);
 							}
 						
-						else if(findWhiteKing().isCheck())
-							{
-							System.out.println("White is now in check!"); 
-							}
+						
 				 		}
 				 
-					if(this.color.equals("White"))
+					if(color.equals("White"))
 						{
-						if(findBlackKing().isCheckMate())
-						{
-						ChessMain.printBoard();
-						System.out.println("Black is now in checkmate!"); 
-						System.exit(0);
-						}
+						int xCoord = findBlackKing().xCoord;
+						int yCoord = findBlackKing().yCoord;
+						if(ChessMain.board[xCoord][yCoord].isCheckMate())
+							{
+							ChessMain.printBoard();
+							System.out.println("Black is now in checkmate!"); 
+							System.exit(0);
+							}
 						
-						else if(findBlackKing().isCheck())
+						if(ChessMain.board[xCoord][yCoord].isCheck())
 							{
 							System.out.println("Black is now in check!"); 
 							}
@@ -120,16 +136,16 @@ public abstract class Piece
  
 		public boolean isCheck()
 		{
-			
+			clearBoard();
 			int kingPosX = 0;
 			int kingPosY = 0;
-			if(this.color.equals("White"))
+			if(color.equals("White"))
 				{
 				kingPosX = findWhiteKing().xCoord;
 				kingPosY = findWhiteKing().yCoord;
 				}
 			
-			else if(this.color.equals("Black"))
+			else if(color.equals("Black"))
 				{
 				kingPosX = findBlackKing().xCoord;
 				kingPosY = findBlackKing().yCoord;
@@ -140,22 +156,12 @@ public abstract class Piece
 					
 				for(int col =0; col <8; col++)
 					{
-						
-						if(!(ChessMain.board[row][col].color == this.color) && !(ChessMain.board[row][col] instanceof Empty))
+					clearBoard();
+						if(ChessMain.board[row][col].isValidMove(row, col, kingPosX, kingPosY))
 							{
-							
-							if(ChessMain.board[row][col].isValidMove(row, col, kingPosX, kingPosY))
-								{
-								return true;	
-								}
-								
-							}
-						
-						
-					}
-			
-					
-					
+							return true;	
+							}			
+					}	
 				}
 			return false;
 		}
@@ -168,14 +174,17 @@ public abstract class Piece
 				for(int col =0; col<8; col++)
 					{
 						
-					if(this.color.equals(ChessMain.board[row][col].color))
+					if(color.equals(ChessMain.board[row][col].getColor()))
 						{
 						for(int row2 = 0; row2<8;row2++)
 							{
 							for(int col2 =0; col2<8; col2++)
 								{
 								clearBoard();
+								switch(color)
+								{
 								
+								}
 								
 								if(psuedoboard[row][col].isValidMove(row, col, row2, col2))
 									{
@@ -190,14 +199,10 @@ public abstract class Piece
 									}
 								}
 							}
-						}
-					else
-						{
 						
 						}
 					
 					}
-					
 					
 				}
 			
@@ -205,7 +210,6 @@ public abstract class Piece
 			return true;
 			
 		}
-		
 		
 		
 		public King findWhiteKing()

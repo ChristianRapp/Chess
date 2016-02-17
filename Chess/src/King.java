@@ -31,15 +31,13 @@ public class King extends Piece{
 		
 		if(  ((ixP +1 == fxP)&& (iyP + 1 == fyP || iyP - 1 == fyP || iyP == fyP))  || ((ixP - 1 == fxP) &&(iyP + 1 == fyP || iyP - 1 == fyP || iyP == fyP)) || ((ixP == fxP)&& (iyP + 1 == fyP || iyP - 1 == fyP)) )
 			{
-			if(ChessMain.board[fxP][fyP] instanceof Empty || !(this.color == ChessMain.board[fxP][fyP].getColor()) )
+			if(ChessMain.board[fxP][fyP] instanceof Empty || !(color == ChessMain.board[fxP][fyP].getColor()) )
 				{
-				if(this.color.equals("White")){
-					ChessMain.kingsRow[0].setxCoord(fxP);
-					ChessMain.kingsRow[0].setyCoord(fyP);}
+				if(color.equals("White")){
+					ChessMain.kingsRow[0] = (King) ChessMain.board[ixP][iyP];}
 				
-				if(this.color.equals("Black"))
-					{ChessMain.kingsRow[1].setxCoord(fxP);
-					ChessMain.kingsRow[1].setyCoord(fyP);}
+				if(color.equals("Black"))
+					{ChessMain.kingsRow[1] = (King) ChessMain.board[ixP][iyP];}
 				
 				return true;	
 				}

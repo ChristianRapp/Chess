@@ -6,6 +6,9 @@ public class ChessMain
 	static King[] kingsRow = new King[2];
 	static boolean playing = true;
 	static String currentColor = "White";
+	static ArrayList<Piece> black = new ArrayList<Piece>();
+	static ArrayList<Piece> white = new ArrayList<Piece>();
+
 		public static void main(String[] args)
 			{
 				
@@ -347,7 +350,25 @@ public class ChessMain
 		board[1][5] = new BlackPawn(1,5);
 		board[1][6] = new BlackPawn(1,6);
 		board[1][7] = new BlackPawn(1,7);
-				
+		
+		
+		black.add(board[0][0]);
+		black.add(board[0][1]);
+		black.add(board[0][2]);
+		black.add(board[0][3]);
+		black.add(board[0][4]);
+		black.add(board[0][5]);
+		black.add(board[0][6]);
+		black.add(board[0][7]);
+		black.add(board[1][0]);
+		black.add(board[1][1]);
+		black.add(board[1][2]);
+		black.add(board[1][3]);
+		black.add(board[1][4]);
+		black.add(board[1][5]);
+		black.add(board[1][6]);
+		black.add(board[1][7]);
+
 		}
 		
 		
@@ -373,6 +394,25 @@ public class ChessMain
 			board[6][5] = new WhitePawn(6,5);
 			board[6][6] = new WhitePawn(6,6);
 			board[6][7] = new WhitePawn(6,7);	
+			
+			
+			white.add(board[0][0]);
+			white.add(board[0][1]);
+			white.add(board[0][2]);
+			white.add(board[0][3]);
+			white.add(board[0][4]);
+			white.add(board[0][5]);
+			white.add(board[0][6]);
+			white.add(board[0][7]);
+			
+			white.add(board[1][0]);
+			white.add(board[1][1]);
+			white.add(board[1][2]);
+			white.add(board[1][3]);
+			white.add(board[1][4]);
+			white.add(board[1][5]);
+			white.add(board[1][6]);
+			white.add(board[1][7]);
 		}
 		
 		

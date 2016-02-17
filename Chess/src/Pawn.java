@@ -25,7 +25,7 @@ public class Pawn extends Piece
 		//if(((ixP+1 ==fxP||ixP-1 ==fxP)&& iyP+1 ==fyP)/*If diagonal and up 1*/|| (ixP+1 ==fxP&& iyP ==fyP)/*Checks to see if goes up one*/ ||(ixP+2 ==fxP&& iyP ==fyP)/*Checks to see if goes up two*/)
 			{
 		
-			if(this.color.equals("White"))
+			if(color.equals("White"))
 				{
 				if(ixP-1 == fxP && iyP == fyP)/* x + 1 same y*/
 					{
@@ -42,9 +42,9 @@ public class Pawn extends Piece
 				else if(ixP-1 == fxP && iyP+1 == fyP)/* x + 1 right 1*/
 					{
 					
-					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(color))
 						{
-						
+						isFirstMove = false;
 						return true;
 			
 						}
@@ -53,9 +53,9 @@ public class Pawn extends Piece
 			
 				else if(ixP-1 == fxP && iyP-1 == fyP)/* x + 1  left 1*/
 					{
-					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(color))
 						{
-						
+						isFirstMove = false;
 						return true;
 			
 						}
@@ -65,9 +65,9 @@ public class Pawn extends Piece
 				else if(ixP-2 == fxP && iyP == fyP)/* x + 2 same y*/
 					{
 					
-					if(ChessMain.board[fxP][fyP] instanceof Empty && ChessMain.board[fxP - 1][fyP] instanceof Empty)
+					if(ChessMain.board[fxP][fyP] instanceof Empty && ChessMain.board[fxP - 1][fyP] instanceof Empty && isFirstMove == true)
 						{
-				
+						isFirstMove = false;
 						return true;
 			
 						}
@@ -76,13 +76,13 @@ public class Pawn extends Piece
 			
 				}
 			
-			if(this.color.equals("Black"))
+			if(color.equals("Black"))
 				{
 				if(ixP+1 == fxP && iyP == fyP)/* x + 1 same y*/
 					{
 					if(ChessMain.board[fxP][fyP] instanceof Empty)
 						{
-					
+						isFirstMove = false;
 						return true;
 		
 						}
@@ -92,9 +92,9 @@ public class Pawn extends Piece
 				if(ixP+1 == fxP && iyP+1 == fyP)/* x + 1 right 1*/
 					{
 				
-					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(color))
 						{
-						
+						isFirstMove = false;
 						return true;
 		
 						}
@@ -104,9 +104,9 @@ public class Pawn extends Piece
 				if(ixP+1 == fxP && iyP-1 == fyP)/* x + 1  left 1*/
 					{
 				
-					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(this.color))
+					if(!(ChessMain.board[fxP][fyP] instanceof Empty) && !ChessMain.board[fxP][fyP].getColor().equals(color))
 						{
-					
+						isFirstMove = false;
 						return true;
 		
 						}
@@ -116,9 +116,9 @@ public class Pawn extends Piece
 				if(ixP+2 == fxP && iyP == fyP)/* x + 2 same y*/
 					{
 					
-					if(ChessMain.board[fxP][fyP] instanceof Empty && ChessMain.board[ixP + 1][fyP] instanceof Empty)
+					if(ChessMain.board[fxP][fyP] instanceof Empty && ChessMain.board[ixP + 1][fyP] instanceof Empty && isFirstMove == true)
 						{
-					
+						isFirstMove = false;
 						return true;
 		
 						}
